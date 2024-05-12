@@ -9,4 +9,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  resources :user_items, only: %i[ index create destroy ], as: 'my_items'
+  get 'stores/results', to: 'stores#results'
 end
