@@ -20,6 +20,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_12_000221) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "store_items", force: :cascade do |t|
+    t.bigint "store_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "price"
+    t.index ["item_id"], name: "index_store_items_on_item_id"
+    t.index ["store_id"], name: "index_store_items_on_store_id"
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.string "name"
+    t.text "address"
+    t.string "image_url"
+    t.float "longitude"
+    t.float "latitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_items", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "item_id", null: false
@@ -41,6 +61,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_12_000221) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "store_items", "items"
+  add_foreign_key "store_items", "stores"
   add_foreign_key "user_items", "items"
   add_foreign_key "user_items", "users"
 end
