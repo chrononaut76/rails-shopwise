@@ -5,7 +5,7 @@ class UserItemsController < ApplicationController
 
   def create
     @user_item = UserItem.new(user_item_params)
-    # @user_item.item = item ?
+    # TODO: Define @user_item.item = item ?
     @user_item.user = current_user
     authorize @user_item
   end
@@ -17,6 +17,6 @@ class UserItemsController < ApplicationController
   private
 
   def user_item_params
-
+    params.require(:user_item).permit(:name) # TODO: Identify required params
   end
 end
