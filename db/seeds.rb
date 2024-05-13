@@ -11,6 +11,14 @@
 require 'open-uri'
 require 'nokogiri'
 
+def parser(url)
+  return URI.open(url).read
+  rescue StandardError => e
+    puts "#{e}. Trying again..."
+    sleep 1.5
+    parser(url)
+end
+
 # unless User.all.empty?
 #   puts "Purging 'Users' table..."
 #   User.all.each do |user|
@@ -46,13 +54,8 @@ require 'nokogiri'
 # puts "Seeding stores complete!"
 
 url = 'https://www.metro.ca/en/online-grocery/search-page-1'
-begin
-  response = URI.open(url).read
-  xml_doc = Nokogiri::HTML(response)
-  p xml_doc
-  # xml_doc.search('.content__head').first do |item|
-  #   puts item
-  # end
-rescue StandardError => e
-  print e
+response = parser(url)
+xml_doc = Nokogiri::HTML(response)
+xml_doc.search('div .content__head').first(5) do |item|
+  p item.class
 end
