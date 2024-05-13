@@ -11,4 +11,8 @@ class StoresPolicy < ApplicationPolicy
     #   scope.all
     # end
   end
+
+  def results?
+    true
+  end
 end
