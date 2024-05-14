@@ -13,11 +13,20 @@ require 'nokogiri'
 
 def parser(url)
   return URI.open(url).read
-  rescue StandardError => e
-    puts "#{e}. Trying again..."
-    sleep 1.5
-    parser(url)
+rescue StandardError => e
+  puts "#{e}. Trying again..."
+  sleep 2
+  parser(url)
 end
+
+url = 'https://www.metro.ca/en/online-grocery/search-page-1'
+response = parser(url)
+xml_doc = Nokogiri::HTML(response)
+File.open('metro_page_1.html', 'wb') { |file| file.write(xml_doc) }
+
+# xml_doc.search('div .content__head').first(5) do |item|
+#   p item
+# end
 
 # unless User.all.empty?
 #   puts "Purging 'Users' table..."
@@ -52,10 +61,3 @@ end
 # ).name}"
 # # end
 # puts "Seeding stores complete!"
-
-url = 'https://www.metro.ca/en/online-grocery/search-page-1'
-response = parser(url)
-xml_doc = Nokogiri::HTML(response)
-xml_doc.search('div .content__head').first(5) do |item|
-  p item.class
-end
