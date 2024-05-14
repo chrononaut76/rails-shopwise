@@ -32,10 +32,15 @@ rescue StandardError => e
   puts e
 end
 puts 'Parsing data via Nokogiri'
-xml_doc = Nokogiri::HTML(js_doc.first.inner_html)
+xml_doc = js_doc.each { |element| Nokogiri::HTML(element.inner_html) }
 # xml_doc = js_doc.each { |element| Nokogiri::HTML(element.inner_html) }
-puts 'Printing results to screen'
-p xml_doc
+puts 'Writing results to file'
+File.open('iga_grocery_items.html', 'wb') do |file|
+  xml_doc.each do |element|
+    file.write(element.title)
+    # file.write(element.title)
+  end
+end
 # xml_doc.each do |element|
 #   p element
 #   element.search('.js-ga-productname') { |item| p item.text }
