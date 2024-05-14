@@ -54,6 +54,7 @@ gem "pundit"
 gem "faker"
 gem "open-uri"
 gem "nokogiri"
+gem "watir"
 
 group :development, :test do
   gem "dotenv-rails"

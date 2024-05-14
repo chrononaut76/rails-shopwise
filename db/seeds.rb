@@ -8,24 +8,37 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 # require 'faker'
-require 'open-uri'
+require 'watir'
 require 'nokogiri'
 
-def parser(url)
-  return URI.open(url).read
+# def parser(url)
+#   return URI.open(url).read
+# rescue StandardError => e
+#   puts "#{e}. Trying again..."
+#   sleep 2
+#   parser(url)
+# end
+
+# url = 'https://www.metro.ca/en/online-grocery/search-page-1'
+url = 'https://www.iga.net/en/online_grocery/grocery'
+puts 'Creating browser instance'
+browser = Watir::Browser.new
+puts "Going to #{url}"
+browser.goto(url)
+puts 'Waiting for CSS selector presence'
+begin
+  js_doc = browser.elements(css: '.item-product__content') { |element| element.wait_until(&:present?) }
 rescue StandardError => e
-  puts "#{e}. Trying again..."
-  sleep 2
-  parser(url)
+  puts e
 end
-
-url = 'https://www.metro.ca/en/online-grocery/search-page-1'
-response = parser(url)
-xml_doc = Nokogiri::HTML(response)
-File.open('metro_page_1.html', 'wb') { |file| file.write(xml_doc) }
-
-# xml_doc.search('div .content__head').first(5) do |item|
-#   p item
+puts 'Parsing data via Nokogiri'
+xml_doc = Nokogiri::HTML(js_doc.first.inner_html)
+# xml_doc = js_doc.each { |element| Nokogiri::HTML(element.inner_html) }
+puts 'Printing results to screen'
+p xml_doc
+# xml_doc.each do |element|
+#   p element
+#   element.search('.js-ga-productname') { |item| p item.text }
 # end
 
 # unless User.all.empty?
