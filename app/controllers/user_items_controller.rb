@@ -1,18 +1,18 @@
 class UserItemsController < ApplicationController
-  before_action :set_item, only: %i[new create]
+  # before_action :set_item, only: %i[new create]
 
   def index
     @user_items = policy_scope(UserItem)
   end
 
   def create
-    @user = current_user
     @item = Item.find(params[:item_id])
     @user_item = UserItem.new(user_item_params)
     # TODO: Define @user_item.item = item ?
     @user_item.user = current_user
     authorize @user_item
-    @user_item.save
+    @user_item.item = @item
+    @user_item.save!
   end
 
   def destroy
@@ -21,9 +21,9 @@ class UserItemsController < ApplicationController
 
   private
 
-  def set_item
-    @item = Item.find(params[:item_id])
-  end
+  # def set_item
+  #   @item = Item.find(params[:item_id])
+  # end
 
   def item_params
     params.require(:item).permit(:name)
