@@ -25,7 +25,7 @@ puts 'Creating users...'
 3.times do
   puts "  Created #{User.create!(email: Faker::Internet.email, password: '123456').email}"
 end
-puts 'Seeding users complete!'
+puts "Seeding users complete!\n\n"
 
 # Purge contents of 'Stores' table
 unless Store.all.empty?
@@ -47,7 +47,7 @@ puts 'Creating stores...'
     latitude: Faker::Address.latitude
   ).name}"
 end
-puts 'Seeding stores complete!'
+puts "Seeding stores complete!\n\n"
 
 # Purge contents of 'Items' table
 unless Item.all.empty?
@@ -60,15 +60,19 @@ end
 
 # Seed 'Items' table
 puts 'Creating items...'
-# url = "https://api.edamam.com/api/food-database/v2/parser?app_id=EDAMAM_APP_ID&app_key=EDAMAM_API_KEY&nutrition-type=cooking"
+# url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{EDAMAM_APP_ID}&app_key=#{EDAMAM_API_KEY}&nutrition-type=cooking"
 url = 'https://api.edamam.com/api/food-database/v2/parser?app_id=d8a7c33c&app_key=a657d89a37f29e8c714e10004c9f3613&nutrition-type=cooking'
 5.times do
   response = URI.open(url).read
   json = JSON.parse(response)
-  json['hints'].each { |item| p Item.create!(name: item.dig('food', 'knownAs')) }
-  url = json.dig('_links', 'next', 'href')
+  json['hints'].each { |item| Item.create!(name: item.dig('food', 'knownAs')) }
+  puts "  Created #{Item.count} items"
+  next_page = json.dig('_links', 'next', 'href')
+  prng = Random.new
+  next_session = (40 * prng.rand(1..50)).to_s
+  url = next_page.sub(/\d\d+/, next_session)
 end
-puts 'Seeding items complete!'
+puts "Seeding items complete!\n\n"
 
 # Purge contents of 'UserItems' table
 unless UserItem.all.empty?
@@ -80,14 +84,16 @@ unless UserItem.all.empty?
 end
 
 # Seed 'UserItems' table
-puts 'Creating user items...'
 User.all.each do |user|
+  puts "Creating user items for #{user.email}..."
   5.times do
+    prng = Random.new
     user_item = UserItem.create!(
-      item_id: Item.find((Item.first.id..Item.last.id).to_a.sample),
+      item_id: prng.rand(Item.first.id..Item.last.id),
       user_id: user.id
     )
-    puts "  Created #{Item.find(user_item.item_id).name} for #{user.email}"
+    puts "  Created #{Item.find(user_item.item_id).name}"
   end
+  puts "\n"
 end
 puts 'Seeding user items complete!'
