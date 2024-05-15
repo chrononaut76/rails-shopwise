@@ -1,0 +1,18 @@
+
+
+
+<div class="container-bookings text-center">
+  <h1 class="text-center">My Items</h1>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="cards">
+        <% @user_items.each do |user_item| %>
+              <div class="card-body">
+                <h5 class="card-title"><%= user_item.item.name %></h5>
+              </div>
+            <% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
