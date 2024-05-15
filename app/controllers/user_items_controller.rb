@@ -8,6 +8,7 @@ class UserItemsController < ApplicationController
     # TODO: Define @user_item.item = item ?
     @user_item.user = current_user
     authorize @user_item
+    @item = Item.where()
   end
 
   def destroy
