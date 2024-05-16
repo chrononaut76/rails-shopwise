@@ -1,4 +1,10 @@
 class Item < ApplicationRecord
+  include PgSearch::Model
+  pg_search_scope :search_by_name,
+    against: :name,
+    using: {
+      tsearch: { prefix: true }
+    }
   has_many :user_items
   has_many :users, through: :user_items
 

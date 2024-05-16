@@ -1,17 +1,24 @@
-
-
-
-<div class="container-bookings text-center">
-  <h1 class="text-center">My Items</h1>
+<div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col">
+      <%= render "form", item: @item %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h1>My Items</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
       <div class="cards">
-        <% @user_items.each do |user_item| %>
-              <div class="card-body">
-                <h5 class="card-title"><%= user_item.item.name %></h5>
-              </div>
-            <% end %>
-          </div>
+        <ul>
+          <% @user_items.each do |user_item| %>
+            <div class="card-body">
+              <li class="card-title"><%= user_item.item.name %></li>
+            </div>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>
