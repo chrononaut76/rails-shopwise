@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-
-  resources :user_items, only: %i[ index create destroy ], as: 'my_items'
+  get 'user_items', to: 'user_items#index', as: 'my_items'
+  resources :user_items, only: %i[create destroy]
   get 'stores/results', to: 'stores#results'
 end
