@@ -1,4 +1,4 @@
-<%= form_with model: @item, data: { controller: 'search-items' } do |form| %>
-  <%= form.text_field :name, data: { search_items_target: 'input'} %>
+<%= form_with model: @item do |form| %>
+  <%= form.text_field :name, data: { search_items_target: 'input', action: 'keyup->search-items#returnResults' } %>
   <%= form.submit 'Add to my items' %>
 <% end %>

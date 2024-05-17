@@ -1,7 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col" data-controller="search-items">
       <%= render "form", item: @item %>
+      <ul class="list-unstyled" data-search-items-target="results">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
   </div>
   <div class="row">
