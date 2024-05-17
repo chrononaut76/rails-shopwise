@@ -20,7 +20,10 @@ class UserItemsController < ApplicationController
   end
 
   def destroy
+    @user_item = UserItem.find(params[:id])
     authorize @user_item
+    @user_item.destroy
+    redirect_to my_items_path
   end
 
   private
