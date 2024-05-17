@@ -1,8 +1,5 @@
 class StoresController < ApplicationController
   def results
-    @stores = policy_scope(Store)
-    authorize @stores
-
     @stores = if params[:latitude].present? && params[:longitude].present?
                 Store.nearby(params[:latitude], params[:longitude])
               else
@@ -13,5 +10,6 @@ class StoresController < ApplicationController
       total_price = store.store_items.sum(:price)
       { store: store, total_price: total_price }
     end
+    authorize @stores
   end
 end
