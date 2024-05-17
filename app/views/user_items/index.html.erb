@@ -1,37 +1,28 @@
-
-
-
 <div class="container-bookings text-center">
   <h1 class="text-center">My Items</h1>
+  <div data-controller='search-items'>
+    <%= simple_form_for my_items_path, data: { search_items_target: 'form'} do |f| %>
+      <div class="fields">
+        <%= f.input :name, value: params[:name], input_html: { data: { search_items_target: 'input', action: 'keyup->search-items#returnResults' } } %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Add item", class: "btn" "btn-dark" %>
+      </div>
+      <%= render 'items/results' %>
+    <% end %>
+  </div>
 
-
-
-       <%= simple_form_for my_items_path, data: { controller: 'search-items'} do |f| %>
-            <div class="fields">
-              <%= f.input :name, input_html: { data: { search_items_target: 'input', action: 'keyup->search-items#returnResults' } } %>
-            </div>
-            <div class="form-actions">
-              <%= f.button :submit, "Add item", class: "btn" "btn-dark"  %>
-            </div>
-            <% end %>
-
-
-
-      <%# <%= link_to "Add Item", my_items_path, class: "btn btn-dark text-center mt-10" %>
-
-
+  <%# <%= link_to "Add Item", my_items_path, class: "btn btn-dark text-center mt-10" %>
 
   <div class="row">
     <div class="col">
       <div class="cards">
         <% @user_items.each do |user_item| %>
-              <div class="card-body">
-                <h5 class="card-title"><%= user_item.item.name %></h5>
-                 <%= link_to "Delete", my_item_path(user_item),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-              </div>
-            <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= user_item.item.name %></h5>
+            <%= link_to "Delete", my_item_path(user_item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
           </div>
+        <% end %>
       </div>
     </div>
   </div>
