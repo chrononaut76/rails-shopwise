@@ -6,9 +6,9 @@
 
 
 
-       <%= simple_form_for my_items_path do |f| %>
+       <%= simple_form_for my_items_path, data: { controller: 'search-items'} do |f| %>
             <div class="fields">
-              <%= f.input :name %>
+              <%= f.input :name, input_html: { data: { search_items_target: 'input', action: 'keyup->search-items#returnResults' } } %>
             </div>
             <div class="form-actions">
               <%= f.button :submit, "Add item", class: "btn" "btn-dark"  %>
