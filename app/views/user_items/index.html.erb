@@ -4,7 +4,9 @@
 <div class="container-bookings text-center">
   <h1 class="text-center">My Items</h1>
 
-       <%= simple_form_for @item do |f| %>
+
+
+       <%= simple_form_for my_items_path do |f| %>
             <div class="fields">
               <%= f.input :name %>
             </div>

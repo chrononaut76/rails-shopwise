@@ -3,16 +3,19 @@ class UserItemsController < ApplicationController
 
   def index
     @user_items = policy_scope(UserItem)
+    @item = Item.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
-    @user_item = UserItem.new(user_item_params)
-    # TODO: Define @user_item.item = item ?
+    @item = Item.new(user_item_params)
+    @item.save!
+    @user_item = UserItem.new
     @user_item.user = current_user
     authorize @user_item
     @user_item.item = @item
-    @user_item.save!
+    if @user_item.save
+      redirect_to my_items_path, notice: 'Item added successfully.'
+    end
   end
 
   def destroy
@@ -30,6 +33,6 @@ class UserItemsController < ApplicationController
   end
 
   def user_item_params
-    params.require(:user_item).permit(:user_id, :item_id) # TODO: Identify required params
+    params.require("/user_items").permit("/user_items", :name) # TODO: Identify required params
   end
 end
