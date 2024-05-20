@@ -3,7 +3,14 @@ class UserItemsController < ApplicationController
 
   def index
     @user_items = policy_scope(UserItem)
-    @item = Item.new
+    @items = policy_scope(Item)
+
+    @items = @items.where('name ILIKE ?', "%#{params[:query]}%") if params[:query].present?
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: 'items/index', locals: { items: @items }, formats: [:html] }
+    end
   end
 
   def create

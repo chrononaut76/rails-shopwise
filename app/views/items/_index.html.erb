@@ -1,0 +1,9 @@
+<div data-search-items-target='results'>
+  <% unless params[:query].blank? %>
+    <ul>
+      <% @items.each do |item| %>
+        <li><%= item.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
