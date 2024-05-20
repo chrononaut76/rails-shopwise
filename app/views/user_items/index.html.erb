@@ -1,12 +1,6 @@
 <div class="container">
   <h1 class="text-center">My Items</h1>
-  <div data-controller='search-items'>
-    <%= simple_form_for my_items_path, data: { search_items_target: 'form'} do |f| %>
-      <%= f.input :name, value: params[:name], input_html: { data: { search_items_target: 'input', action: 'keyup->search-items#results' } } %>
-      <%#= f.button :submit, "Add item" %>
-      <%= render 'items/index' %>
-    <% end %>
-  </div>
+  <%= render "form" %>
 
   <%# <%= link_to "Add Item", my_items_path, class: "btn btn-dark text-center mt-10" %>
 
