@@ -1,8 +1,11 @@
 <div data-search-items-target='results'>
   <% unless params[:query].blank? %>
-    <ul>
+    <ul class='list-group'>
       <% @items.each do |item| %>
-        <li><%= item.name %></li>
+        <li class='list-group-item'>
+          <%= item.name %>
+          <%= link_to 'Add item' %>
+        </li>
       <% end %>
     </ul>
   <% end %>

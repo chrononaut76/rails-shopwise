@@ -1,13 +1,9 @@
-<div class="container-bookings text-center">
+<div class="container">
   <h1 class="text-center">My Items</h1>
   <div data-controller='search-items'>
     <%= simple_form_for my_items_path, data: { search_items_target: 'form'} do |f| %>
-      <div class="fields">
-        <%= f.input :name, value: params[:name], input_html: { data: { search_items_target: 'input', action: 'keyup->search-items#results' } } %>
-      </div>
-      <div class="form-actions">
-        <%= f.button :submit, "Add item", class: "btn" "btn-dark" %>
-      </div>
+      <%= f.input :name, value: params[:name], input_html: { data: { search_items_target: 'input', action: 'keyup->search-items#results' } } %>
+      <%#= f.button :submit, "Add item" %>
       <%= render 'items/index' %>
     <% end %>
   </div>
