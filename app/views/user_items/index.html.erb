@@ -1,37 +1,18 @@
-
-
-
-<div class="container-bookings text-center">
+<div class="container">
   <h1 class="text-center">My Items</h1>
+  <%= render "form" %>
 
-
-
-       <%= simple_form_for my_items_path do |f| %>
-            <div class="fields">
-              <%= f.input :name %>
-            </div>
-            <div class="form-actions">
-              <%= f.button :submit, "Add item", class: "btn" "btn-dark"  %>
-            </div>
-            <% end %>
-
-
-
-      <%# <%= link_to "Add Item", my_items_path, class: "btn btn-dark text-center mt-10" %>
-
-
+  <%# <%= link_to "Add Item", my_items_path, class: "btn btn-dark text-center mt-10" %>
 
   <div class="row">
-    <div class="col-md-8">
+    <div class="col">
       <div class="cards">
         <% @user_items.each do |user_item| %>
-              <div class="card-body">
-                <h5 class="card-title"><%= user_item.item.name %></h5>
-                 <%= link_to "Delete", my_item_path(user_item),
-                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-              </div>
-            <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= user_item.item.name %></h5>
+            <%= link_to "Delete", my_item_path(user_item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
           </div>
+        <% end %>
       </div>
     </div>
   </div>
