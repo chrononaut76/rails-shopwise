@@ -4,7 +4,7 @@
       <% @items.each do |item| %>
         <li class='list-group-item'>
           <%= item.name %>
-          <%= link_to 'Add item' %>
+          <%= link_to 'Add item', "#{my_items_path}?item_id=#{item.id}", data: { turbo_method: :post } %>
         </li>
       <% end %>
     </ul>
