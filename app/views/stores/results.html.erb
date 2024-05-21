@@ -1,0 +1,11 @@
+<h1>Nearby Stores</h1>
+
+<div>
+  <% @stores_with_prices.each do |store_with_price| %>
+    <div>
+      <h2><%= store_with_price[:store].name %></h2>
+      <p><%= store_with_price[:store].address %></p>
+      <p>Total List Price of Items: $<%= store_with_price[:total_price] %></p>
+    </div>
+  <% end %>
+</div>
