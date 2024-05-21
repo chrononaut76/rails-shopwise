@@ -3,7 +3,7 @@ class UserItemsController < ApplicationController
     @user_items = policy_scope(UserItem)
     @items = policy_scope(Item)
 
-    @items = @items.where('name ILIKE ?', "%#{params[:query]}%") if params[:query].present?
+    @items = Item.search_by_name(params[:query]) if params[:query].present?
 
     respond_to do |format|
       format.html
