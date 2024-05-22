@@ -26,3 +26,10 @@ class UserItemsController < ApplicationController
     redirect_to my_items_path, status: :see_other
   end
 end
+
+# add calculations
+# user has selected items, we have a user_items list
+# with this list we want to search each store for the items on the list
+# separate the items by store they belong to
+# sum the prices by store
+# sort ascending
