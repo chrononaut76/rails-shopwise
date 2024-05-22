@@ -9,8 +9,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  get 'my_items', to: 'user_items#index', as: 'my_items'
-  post 'my_items/(:item_id)', to: 'user_items#create'
-  delete 'my_items/:id', to: 'user_items#destroy', as: 'my_item'
+  # get 'my_items', to: 'user_items#index', as: 'my_items'
+  # post 'my_items/(:item_id)', to: 'user_items#create'
+  # delete 'my_items/:id', to: 'user_items#destroy', as: 'my_item'
+
+  resources :my_items, controller: 'user_items', only: %i[index create destroy]
+  resources :items, controller: 'user_items', only: :create do
+    member do
+      post 'my_items'
+    end
+  end
   get 'stores/results', to: 'stores#results'
 end
