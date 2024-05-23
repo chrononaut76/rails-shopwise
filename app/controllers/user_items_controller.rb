@@ -7,7 +7,7 @@ class UserItemsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.text { render partial: 'items/index', locals: { items: @items }, formats: [:html] }
+      format.text { render partial: 'results', locals: { items: @items }, formats: [:html] }
     end
   end
 
