@@ -18,7 +18,7 @@ def fetch_prices(term)
     },
     provigo: {
       query: 'https://www.provigo.ca/search?search-bar=',
-      selector: '.price__value .selling-price-list__item__price .selling-price-list__item__price--sale__value'
+      selector: '.selling-price-list__item__price--now-price__value'
     }
   }
   stores_queries.each_key do |key|
@@ -32,11 +32,13 @@ def fetch_prices(term)
     begin
       js_doc = browser.element(css: selector).wait_until(&:present?)
       puts "Printing content parsed by Nokogiri for term '#{term}'"
-      p Nokogiri::HTML(js_doc.inner_html).text
+      re = /\d+[.,]\d{2}/
+      p re.match(Nokogiri::HTML(js_doc.inner_html).text)
     rescue StandardError => e
       puts e
     end
+    puts 'Closing browser instance'
   end
 end
 
-fetch_prices('sugar')
+fetch_prices('chocolate')
