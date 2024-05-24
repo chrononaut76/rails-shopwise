@@ -2,7 +2,6 @@
   <h1 class="text-center">My Items</h1>
   <%= render "form" %>
 
-  <%# <%= link_to "Add Item", my_items_path, class: "btn btn-dark text-center mt-10" %>
 
   <div class="row">
     <div class="col">
@@ -16,4 +15,15 @@
       </div>
     </div>
   </div>
+  <%= link_to "Find best option", stores_results_path, class: "btn btn-dark text-center mt-10"%>
 </div>
+
+
+
+<%@user_items.each do |user_item| %>
+<% item_tocheck = Item.find(user_item.item_id) %>
+<% @stores.each do |store| %>
+<p><%= store.name %></p>
+   <%= StoreItem.find_by(item_id: item_tocheck, store_id: store.id).price %>
+  <% end %>
+<% end %>
