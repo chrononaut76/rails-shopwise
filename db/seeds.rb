@@ -97,3 +97,15 @@ User.all.each do |user|
   puts "\n"
 end
 puts 'Seeding user items complete!'
+
+
+Store.ids.each do |store_id|
+  Item.ids.each do |item_id|
+    StoreItem.create!(
+    store_id: store_id,
+    item_id: item_id,
+    price: rand(1..100)
+    )
+     # create a StoreItem with store_id: and item_id:
+end
+end
