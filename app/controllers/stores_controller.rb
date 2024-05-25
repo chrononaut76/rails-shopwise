@@ -1,5 +1,4 @@
 class StoresController < ApplicationController
-
   def results
     @item_ids = params[:list]
     totals = {}
