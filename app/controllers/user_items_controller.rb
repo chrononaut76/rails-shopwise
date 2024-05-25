@@ -5,7 +5,7 @@ class UserItemsController < ApplicationController
 
     @items = Item.search_by_name(params[:query]) if params[:query].present?
     @stores = policy_scope(Store)
-     params[:list] = @user_items
+    @item_ids = @user_items.map(&:item_id)
 
     respond_to do |format|
       format.html

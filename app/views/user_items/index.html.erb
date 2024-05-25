@@ -14,15 +14,12 @@
         <% end %>
       </div>
     </div>
-    <%# <%= simple_form_for stores_compare_prices_path do |f| %>
-      <%#= f.input :list, as: :hidden, input_html: { value: @user_items } %>
+    <%# <%= form_for  url: list_path do |f| %>
+      <%#= f.input :list, as: :hidden, input_html: { value: @user_items.to_a } %>
       <%#= f.submit "Find best option" %>
     <%# end %>
-  <%# <%= simple_form_for(@user_items, url: stores_results_path) do |f| %>
-  <%# <%= f.submit "Find best option" %>
-  <%# <% end %>
-  <%= console %>
-  <%= link_to "Find best option", list_path(@user_items), data: { turbo_method: :post }, class: "btn btn-dark text-center mt-10"%>
+
+ <%= link_to "Find best option", stores_results_path(list: @item_ids), class: "btn btn-dark text-center mt-10"%>
 </div>
 
 
