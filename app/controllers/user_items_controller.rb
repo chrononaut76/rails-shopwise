@@ -4,6 +4,8 @@ class UserItemsController < ApplicationController
     @items = policy_scope(Item)
 
     @items = Item.search_by_name(params[:query]) if params[:query].present?
+    @stores = policy_scope(Store)
+    @item_ids = @user_items.map(&:item_id)
 
     respond_to do |format|
       format.html
@@ -26,3 +28,4 @@ class UserItemsController < ApplicationController
     redirect_to my_items_path, status: :see_other
   end
 end
+
