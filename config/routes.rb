@@ -4,7 +4,11 @@ Rails.application.routes.draw do
 
   get "up" => "rails/health#show", as: :rails_health_check
 
-  resources :my_items, controller: 'user_items', only: %i[index destroy]
-  post 'my_items(/:item_id)', to: 'user_items#create'
+  # Defines the root path route ("/")
+  # root "posts#index"
+  get 'my_items', to: 'user_items#index', as: 'my_items'
+  post 'stores/list/:user_items', to: 'stores#compare_prices', as: 'list'
+  post 'my_items', to: 'user_items#create'
+  delete 'my_items/:id', to: 'user_items#destroy', as: 'my_item'
   get 'stores/results', to: 'stores#results'
 end

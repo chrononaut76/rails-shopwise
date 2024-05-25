@@ -5,6 +5,7 @@ class UserItemsController < ApplicationController
 
     @items = Item.search_by_name(params[:query]) if params[:query].present?
     @stores = policy_scope(Store)
+     params[:list] = @user_items
 
     respond_to do |format|
       format.html
@@ -26,26 +27,12 @@ class UserItemsController < ApplicationController
     @user_item.destroy
     redirect_to my_items_path, status: :see_other
   end
-end
-
-# add calculations
-# user has selected items, we have a user_items list
-# with this list we want to search each store for the items on the list
-# separate the items by store they belong to
-# sum the prices by store
-# sort ascending
-
-def calculate
-  @stores = Store.all
-  @user_items = UserItem.where(user_id: 1)
-
-  # @stores.each do
-  # StoreItem.find_by(item_id: 57, store_id: 5).price
-
-
 
 
 end
+
+
+
 
 
 

@@ -104,7 +104,7 @@ Store.ids.each do |store_id|
     StoreItem.create!(
     store_id: store_id,
     item_id: item_id,
-    price: rand(1..100)
+    price: rand(1..20)
     )
      # create a StoreItem with store_id: and item_id:
 end
