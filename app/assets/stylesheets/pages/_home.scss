@@ -1,1 +1,55 @@
-// Specific CSS for your home-page
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin-top: 40px;
+}
+
+.custom-blue-btn {
+  background-color: #0A4D71;
+  width: 333px;
+  height: 58px;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  line-height: 40px;
+  margin-top: 96px;
+}
+
+.avatar-custom {
+  width: 140px;
+  height: auto;
+}
+
+.user-greeting {
+  margin-top: 120px;
+}
+
+.user-greeting h1 {
+  color: #0A4D71;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  line-height: 1.2;
+}
+
+body {
+  background-color: #0A4D71;
+  background-image: url('logo_background/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.logo {
+  width: 390px;
+  height: 225px;
+}
