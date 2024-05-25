@@ -14,10 +14,10 @@ class StoresController < ApplicationController
                 Store.all
               end
 
-    @total_by_stores = totals.map do |name, sum|
+    @total_by_store = totals.map do |name, sum|
       { store: name, total_price: sum }
     end
-      @total_by_stores.sort_by!{ |hash| hash[:total_price] }
+    @total_by_store.sort_by! { |hash| hash[:total_price] }
     authorize @stores
   end
 end

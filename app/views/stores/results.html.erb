@@ -1,10 +1,10 @@
 <h1>Nearby Stores</h1>
 
 <div>
-  <% @total_by_stores.each do |h| %>
+  <% @total_by_store.each do |h| %>
     <div>
       <h2><%= h[:store] %></h2>
-      <p>Total List Price: $<%= h[:total_price] %></p>
+      <p>Total List Price of Items: $<%= h[:total_price] %></p>
     </div>
   <% end %>
 </div>

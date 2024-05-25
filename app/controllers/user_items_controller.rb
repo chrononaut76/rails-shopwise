@@ -27,29 +27,5 @@ class UserItemsController < ApplicationController
     @user_item.destroy
     redirect_to my_items_path, status: :see_other
   end
-
-
 end
 
-
-
-
-
-
-
-# def calculate_total_price(store_prices)
-#   total_price = 0
-#   product.each do |item|
-#     total_price += store_prices[item]
-#   end
-#   total_price
-# end
-
-
-
-
-
-# store_prices = { apple: 2, banana: 1, orange: 1.5 }
-
-# total_price = calculate_total_price(product, store_prices)
-# puts "Total price: $#{total_price}"
