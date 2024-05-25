@@ -14,16 +14,26 @@
         <% end %>
       </div>
     </div>
-  </div>
-  <%= link_to "Find best option", stores_results_path, class: "btn btn-dark text-center mt-10"%>
+    <%# <%= simple_form_for stores_compare_prices_path do |f| %>
+      <%#= f.input :list, as: :hidden, input_html: { value: @user_items } %>
+      <%#= f.submit "Find best option" %>
+    <%# end %>
+  <%# <%= simple_form_for(@user_items, url: stores_results_path) do |f| %>
+  <%# <%= f.submit "Find best option" %>
+  <%# <% end %>
+  <%= console %>
+  <%= link_to "Find best option", list_path(@user_items), data: { turbo_method: :post }, class: "btn btn-dark text-center mt-10"%>
 </div>
 
 
 
-<%@user_items.each do |user_item| %>
-<% item_tocheck = Item.find(user_item.item_id) %>
-<% @stores.each do |store| %>
-<p><%= store.name %></p>
-   <%= StoreItem.find_by(item_id: item_tocheck, store_id: store.id).price %>
-  <% end %>
-<% end %>
+
+
+
+<%# <%@user_items.each do |user_item| %>
+<%# <% item_tocheck = Item.find(user_item.item_id) %>
+<%# <% @stores.each do |store| %>
+<%# <><%= store.name %>
+   <%# <%= StoreItem.find_by(item_id: item_tocheck, store_id: store.id).price %>
+  <%# <% end %>
+<%# <% end %>
