@@ -5,7 +5,7 @@ class UserItemsController < ApplicationController
 
     @items = Item.search_by_name(params[:query]) if params[:query].present?
     @stores = policy_scope(Store)
-     params[:list] = @user_items
+    @item_ids = @user_items.map(&:item_id)
 
     respond_to do |format|
       format.html
@@ -27,29 +27,4 @@ class UserItemsController < ApplicationController
     @user_item.destroy
     redirect_to my_items_path, status: :see_other
   end
-
-
 end
-
-
-
-
-
-
-
-# def calculate_total_price(store_prices)
-#   total_price = 0
-#   product.each do |item|
-#     total_price += store_prices[item]
-#   end
-#   total_price
-# end
-
-
-
-
-
-# store_prices = { apple: 2, banana: 1, orange: 1.5 }
-
-# total_price = calculate_total_price(product, store_prices)
-# puts "Total price: $#{total_price}"
