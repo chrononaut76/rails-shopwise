@@ -28,3 +28,4 @@ class UserItemsController < ApplicationController
     redirect_to my_items_path, status: :see_other
   end
 end
+
