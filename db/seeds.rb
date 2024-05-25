@@ -135,7 +135,7 @@ Item.all.each do |item|
     StoreItem.create!(
       store_id: store.id,
       item_id: item.id,
-      price: dollars + cents
+      price: (dollars + cents).round(2)
     )
     puts "  Created #{StoreItem.count} store items" if StoreItem.count % 40 == 0
   end
