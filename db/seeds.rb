@@ -11,52 +11,89 @@ require 'open-uri'
 require 'json'
 require 'faker'
 
+# Purge contents of 'UserItems' table
+unless UserItem.all.empty?
+  puts "Purging 'UserItems' table..."
+  UserItem.all.each do |user_item|
+    UserItem.destroy(user_item.id)
+    # puts "  Records remaining: #{UserItem.count}"
+  end
+end
+
 # Purge contents of 'Users' table
 unless User.all.empty?
   puts "Purging 'Users' table..."
   User.all.each do |user|
     User.destroy(user.id)
-    puts "  Records remaining: #{User.count}"
+    # puts "  Records remaining: #{User.count}"
   end
 end
 
-# Seed 'Users' table
-puts 'Creating users...'
-3.times do
-  puts "  Created #{User.create!(email: Faker::Internet.email, password: '123456').email}"
+# Purge contents of 'StoreItems' table
+unless StoreItem.all.empty?
+  puts "Purging 'StoreItems' table..."
+  StoreItem.all.each do |store_item|
+    StoreItem.destroy(store_item.id)
+    # puts "  Records remaining: #{StoreItem.count}"
+  end
 end
-puts "Seeding users complete!\n\n"
 
 # Purge contents of 'Stores' table
 unless Store.all.empty?
   puts "Purging 'Stores' table..."
   Store.all.each do |store|
     Store.destroy(store.id)
-    puts "  Records remaining: #{Store.count}"
+    # puts "  Records remaining: #{Store.count}"
   end
 end
-
-# Seed 'Stores' table
-puts 'Creating stores...'
-5.times do
-  puts "  Created #{Store.create!(
-    name: Faker::Commerce.vendor,
-    address: Faker::Address.full_address,
-    image_url: Faker::Internet.url,
-    longitude: Faker::Address.longitude,
-    latitude: Faker::Address.latitude
-  ).name}"
-end
-puts "Seeding stores complete!\n\n"
 
 # Purge contents of 'Items' table
 unless Item.all.empty?
   puts "Purging 'Items' table..."
   Item.all.each do |item|
     Item.destroy(item.id)
-    puts "  Records remaining: #{Item.count}"
+    # puts "  Records remaining: #{Item.count}"
   end
 end
+
+# Seed 'Users' table
+puts "\nCreating users..."
+3.times do
+  puts "  Created #{User.create!(email: Faker::Internet.email, password: '123456').email}"
+end
+puts "\nSeeding users complete!\n\n"
+
+# Seed 'Stores' table
+puts 'Creating stores...'
+puts "  Created #{Store.create!(
+  name: 'IGA',
+  address: '900 Rue Saint-Zotique, Montreal, Quebec H2S 1M8',
+  image_url: Faker::Internet.url,
+  longitude: '-73.6058557033521',
+  latitude: '45.540405601234106'
+).name}"
+puts "  Created #{Store.create!(
+  name: 'Metro',
+  address: '1293 Laurier Ave E, Montreal, Quebec H2J 1H2',
+  image_url: Faker::Internet.url,
+  longitude: '-73.6130655321097',
+  latitude: '45.54229967357296'
+).name}"
+puts "  Created #{Store.create!(
+  name: 'PA',
+  address: '5242 Park Ave, Montreal, Quebec H2V 4G7',
+  image_url: Faker::Internet.url,
+  longitude: '-73.59847123862279',
+  latitude: '45.52086325572466',
+).name}"
+puts "  Created #{Store.create!(
+  name: 'Provigo',
+  address: '2386 Lucerne Rd, Mount Royal, Quebec H3R 2J8',
+  image_url: Faker::Internet.url,
+  longitude: '-73.6625659841291',
+  latitude: '45.5088514440043'
+).name}"
+puts "\nSeeding stores complete!\n\n"
 
 # Seed 'Items' table
 puts 'Creating items...'
@@ -72,16 +109,7 @@ url = 'https://api.edamam.com/api/food-database/v2/parser?app_id=d8a7c33c&app_ke
   next_session = (40 * prng.rand(1..50)).to_s
   url = next_page.sub(/\d\d+/, next_session)
 end
-puts "Seeding items complete!\n\n"
-
-# Purge contents of 'UserItems' table
-unless UserItem.all.empty?
-  puts "Purging 'UserItems' table..."
-  UserItem.all.each do |user_item|
-    UserItem.destroy(user_item.id)
-    puts "  Records remaining: #{UserItem.count}"
-  end
-end
+puts "\nSeeding items complete!\n\n"
 
 # Seed 'UserItems' table
 User.all.each do |user|
@@ -96,4 +124,20 @@ User.all.each do |user|
   end
   puts "\n"
 end
-puts 'Seeding user items complete!'
+puts "Seeding user items complete!\n\n"
+
+# Seed 'StoreItems' table
+puts 'Creating store items with prices...'
+Item.all.each do |item|
+  Store.all.each do |store|
+    dollars = (0.0..9.0).step(1).to_a.sample
+    cents = ((10.0..90.0).step(10).to_a.sample + 9.0)/100
+    StoreItem.create!(
+      store_id: store.id,
+      item_id: item.id,
+      price: (dollars + cents).round(2)
+    )
+    puts "  Created #{StoreItem.count} store items" if StoreItem.count % 40 == 0
+  end
+end
+puts "\nSeeding store items complete!"
