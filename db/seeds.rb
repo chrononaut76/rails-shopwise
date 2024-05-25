@@ -124,7 +124,6 @@ User.all.each do |user|
   end
   puts "\n"
 end
-
 puts "Seeding user items complete!\n\n"
 
 # Seed 'StoreItems' table
