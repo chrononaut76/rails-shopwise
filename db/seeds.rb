@@ -67,31 +67,31 @@ puts "\nSeeding users complete!\n\n"
 puts 'Creating stores...'
 puts "  Created #{Store.create!(
   name: 'IGA',
-  address: Faker::Address.full_address,
+  address: '900 Rue Saint-Zotique, Montreal, Quebec H2S 1M8',
   image_url: Faker::Internet.url,
-  longitude: Faker::Address.longitude,
-  latitude: Faker::Address.latitude
+  longitude: '-73.6058557033521',
+  latitude: '45.540405601234106'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'Metro',
-  address: Faker::Address.full_address,
+  address: '1293 Laurier Ave E, Montreal, Quebec H2J 1H2',
   image_url: Faker::Internet.url,
-  longitude: Faker::Address.longitude,
-  latitude: Faker::Address.latitude
+  longitude: '-73.6130655321097',
+  latitude: '45.54229967357296'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'PA',
-  address: Faker::Address.full_address,
+  address: '5242 Park Ave, Montreal, Quebec H2V 4G7',
   image_url: Faker::Internet.url,
-  longitude: Faker::Address.longitude,
-  latitude: Faker::Address.latitude
+  longitude: '-73.59847123862279',
+  latitude: '45.52086325572466',
 ).name}"
 puts "  Created #{Store.create!(
   name: 'Provigo',
-  address: Faker::Address.full_address,
+  address: '2386 Lucerne Rd, Mount Royal, Quebec H3R 2J8',
   image_url: Faker::Internet.url,
-  longitude: Faker::Address.longitude,
-  latitude: Faker::Address.latitude
+  longitude: '-73.6625659841291',
+  latitude: '45.5088514440043'
 ).name}"
 puts "\nSeeding stores complete!\n\n"
 
