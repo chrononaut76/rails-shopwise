@@ -6,10 +6,8 @@ class UserItemsController < ApplicationController
     @item_ids = @user_items.map(&:item_id)
 
     if params[:query].present?
-        @items = Item.search_by_name(params[:query])
-        if @items.empty?
-          query_api
-      end
+      @items = Item.search_by_name(params[:query])
+      query_api if @items.empty?
     end
 
     respond_to do |format|
@@ -36,10 +34,11 @@ class UserItemsController < ApplicationController
   private
 
   def query_api
-    url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{ENV['EDAMAM_API_ID']}&app_key=#{ENV['EDAMAM_API_KEY']}&ingr=#{params[:query]}"
+    url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{ENV.fetch('EDAMAM_API_ID')}&app_key=#{ENV.fetch('EDAMAM_API_KEY')}&ingr=#{params[:query]}"
     response = URI.open(url).read
     json = JSON.parse(response)
-    json['hints'].each { |item| Item.create!({ name: item.dig('food', 'knownAs') }) }
+    json['hints'].each do |item|
+      Item.create!({ name: item.dig('food', 'knownAs') }) unless Item.find_by(food_id: item.dig('food', 'foodId'))
+    end
   end
-
 end
