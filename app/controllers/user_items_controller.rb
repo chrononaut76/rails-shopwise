@@ -34,11 +34,26 @@ class UserItemsController < ApplicationController
   private
 
   def query_api
-    url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{ENV.fetch('EDAMAM_API_ID')}&app_key=#{ENV.fetch('EDAMAM_API_KEY')}&ingr=#{params[:query]}"
+    url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{ENV.fetch('EDAMAM_APP_ID')}&app_key=#{ENV.fetch('EDAMAM_API_KEY')}&ingr=#{params[:query]}"
     response = URI.open(url).read
     json = JSON.parse(response)
     json['hints'].each do |item|
-      Item.create!({ name: item.dig('food', 'knownAs') }) unless Item.find_by(food_id: item.dig('food', 'foodId'))
+      unless Item.find_by(food_id: item.dig('food', 'foodId'))
+        new_item = Item.create!({ name: item.dig('food', 'knownAs'), food_id: item.dig('food', 'foodId') })
+        add_store_item(new_item)
+      end
+    end
+  end
+
+  def add_store_item(new_item)
+    Store.all.each do |store|
+      dollars = (0.0..9.0).step(1).to_a.sample
+      cents = ((10.0..90.0).step(10).to_a.sample + 9.0) / 100
+      StoreItem.create!(
+        store_id: store.id,
+        item_id: new_item.id,
+        price: (dollars + cents).round(2)
+      )
     end
   end
 end
