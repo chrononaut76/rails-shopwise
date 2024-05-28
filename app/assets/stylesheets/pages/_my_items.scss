@@ -1,0 +1,34 @@
+.my-items-container {
+  background-image: url('logo_background/list_background.png'),url('logo_background/grocery.png');
+  background-size: contain, 120px;
+  background-position: center 82%, center 200px;
+  background-repeat: no-repeat, no-repeat;
+  padding: 20px;
+  min-height: 100vh;
+  position: relative;
+}
+
+h1 {
+ color: #0A4D71;
+ font-size: 52px;
+ font-weight: lighter;
+}
+
+body{
+  background-color: white;
+}
+
+.empty-list-text {
+  position: absolute;
+  top: 360px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 21px;
+  font-weight: bold;
+  color: #0A4D71;
+  white-space: nowrap;
+  width: auto;
+  text-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  background-color: transparent !important;
+}
