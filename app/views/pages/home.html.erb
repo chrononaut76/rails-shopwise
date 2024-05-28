@@ -8,7 +8,7 @@
     <% if user_signed_in? %>
       <h1 class="text-center">Welcome <%= current_user.email %>!</h1>
       <div class="d-flex justify-content-center align-items-center">
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar avatar-custom", alt: "avatar" %>
+        <%= image_tag 'profile_pictures/carlo_profile.jpg', class: 'avatar avatar-custom', alt: 'avatar' %>
       </div>
       <%= link_to "Start Shopping!", my_items_path, class: "btn btn-dark text-center mt-10 custom-blue-btn" %>
     <% end %>
