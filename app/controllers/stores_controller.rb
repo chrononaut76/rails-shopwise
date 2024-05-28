@@ -12,6 +12,12 @@ class StoresController < ApplicationController
               else
                 Store.all
               end
+            @markers = @stores.geocoded.map do |store|
+                {
+                  lat: store.latitude,
+                  lng: store.longitude
+              }
+            end
 
     @total_by_store = totals.map do |name, sum|
       { store: name, total_price: sum }
