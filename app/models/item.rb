@@ -12,4 +12,5 @@ class Item < ApplicationRecord
   has_many :stores, through: :store_items
 
   validates :name, presence: true
+  validates :food_id, presence: true, uniqueness: true
 end
