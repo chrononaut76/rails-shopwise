@@ -84,7 +84,7 @@ puts "  Created #{Store.create!(
   address: '5242 Park Ave, Montreal, Quebec H2V 4G7',
   image_url: Faker::Internet.url,
   longitude: '-73.59847123862279',
-  latitude: '45.52086325572466',
+  latitude: '45.52086325572466'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'Provigo',
@@ -97,12 +97,11 @@ puts "\nSeeding stores complete!\n\n"
 
 # Seed 'Items' table
 puts 'Creating items...'
-# url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{EDAMAM_APP_ID}&app_key=#{EDAMAM_API_KEY}&nutrition-type=cooking"
-url = 'https://api.edamam.com/api/food-database/v2/parser?app_id=d8a7c33c&app_key=a657d89a37f29e8c714e10004c9f3613&nutrition-type=cooking'
+url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{ENV.fetch('EDAMAM_APP_ID')}&app_key=#{ENV.fetch('EDAMAM_API_KEY')}&nutrition-type=cooking"
 5.times do
   response = URI.open(url).read
   json = JSON.parse(response)
-  json['hints'].each { |item| Item.create!(name: item.dig('food', 'knownAs')) }
+  json['hints'].each { |item| Item.create!(name: item.dig('food', 'knownAs'), food_id: item.dig('food', 'foodId')) }
   puts "  Created #{Item.count} items"
   next_page = json.dig('_links', 'next', 'href')
   prng = Random.new
@@ -131,13 +130,13 @@ puts 'Creating store items with prices...'
 Item.all.each do |item|
   Store.all.each do |store|
     dollars = (0.0..9.0).step(1).to_a.sample
-    cents = ((10.0..90.0).step(10).to_a.sample + 9.0)/100
+    cents = ((10.0..90.0).step(10).to_a.sample + 9.0) / 100
     StoreItem.create!(
       store_id: store.id,
       item_id: item.id,
       price: (dollars + cents).round(2)
     )
-    puts "  Created #{StoreItem.count} store items" if StoreItem.count % 40 == 0
+    puts "  Created #{StoreItem.count} store items" if (StoreItem.count % 40).zero?
   end
 end
 puts "\nSeeding store items complete!"
