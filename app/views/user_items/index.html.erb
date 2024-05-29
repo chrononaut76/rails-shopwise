@@ -1,20 +1,30 @@
-<div class="my-items-container">
+<div class="container-page">
+<div class="my-items-container" data-controller="toggle-empty-message">
   <h1 class="text-center">Grocery List</h1>
-  <%= render "form" %>
 
+  <%= render "form" %>
 
   <div class="row">
     <div class="col">
-      <div class="cards">
+      <div class="cards" id="items-list" data-toggle-empty-message-target="itemsList">
         <% @user_items.each do |user_item| %>
-          <div class="card-body">
-            <h5 class="card-title"><%= user_item.item.name %></h5>
-            <%= link_to "Delete", my_item_path(user_item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+          <div class="card-body" data-item-id="<%= user_item.id %>">
+            <input type="checkbox" class="item-checkbox" data-action="change->toggle-empty-message#moveItemToBottom">
+            <h5 class="card-title"><%= user_item.item.name %>
+              <%= link_to my_item_path(user_item), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-link" do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </h5>
           </div>
         <% end %>
       </div>
     </div>
   </div>
 
-  <p class="empty-list-text">Your shopping list is empty!</p>
+  <div id="empty-message" data-toggle-empty-message-target="emptyMessageContainer">
+    <p class="empty-list-text">Your shopping list is empty!</p>
+  </div>
+</div>
+
+<button class="find-deals-button">Find Best Deals</button>
 </div>
