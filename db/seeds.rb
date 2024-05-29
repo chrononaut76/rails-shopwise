@@ -90,7 +90,7 @@ puts "  Created #{Store.create!(
   name: 'Provigo',
   address: '2386 Lucerne Rd, Mount Royal, Quebec H3R 2J8',
   image_url: Faker::Internet.url,
-  longitude: '--73.662023',
+  longitude: '-73.662023',
   latitude: '45.506769'
 ).name}"
 puts "\nSeeding stores complete!\n\n"
