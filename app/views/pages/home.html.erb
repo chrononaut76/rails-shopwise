@@ -2,7 +2,7 @@
 
 <div class="user-greeting text-center">
     <% if user_signed_in? %>
-      <h1 class="text-center">Welcome <%= current_user.email %>!</h1>
+      <h1 class="text-center">Welcome <%= current_user.email.match(/[^@.]*/).to_s.capitalize %>!</h1>
       <div class="d-flex justify-content-center">
         <%= image_tag "profile_pictures/carlo_profile.jpg", class: "avatar", alt: "avatar" %>
       </div>
