@@ -3,6 +3,8 @@
   flex-direction: column;
   height: 100vh;
   margin-top: 40px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 .custom-blue-btn {
@@ -13,7 +15,8 @@
   font-size: 20px;
   text-align: center;
   line-height: 40px;
-  margin-top: 50px;
+  margin-top: 55px;
+  border-radius: 8px;
 }
 
 .avatar-custom {
@@ -22,6 +25,7 @@
   border-radius: 50%;
   object-fit: cover;
   object-position: center 10%;
+  margin-top: 30px;
 }
 
 .user-greeting {
@@ -33,6 +37,10 @@
   font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   line-height: 1.2;
+}
+
+.welcome-text {
+  font-size: 40px;
 }
 
 body {
