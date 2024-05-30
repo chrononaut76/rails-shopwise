@@ -1,11 +1,20 @@
 <h1>Nearby Stores</h1>
+<%= @markers.first %>
 
 <div>
-  <% @stores_with_prices.each do |store_with_price| %>
+  <% @total_by_store.each do |h| %>
     <div>
-      <h2><%= store_with_price[:store].name %></h2>
-      <p><%= store_with_price[:store].address %></p>
-      <p>Total List Price of Items: $<%= store_with_price[:total_price] %></p>
+      <h2><%= h[:store] %></h2>
+      <p>Total List Price of Items: $<%= h[:total_price] %></p>
     </div>
   <% end %>
+</div>
+  <%= link_to "Grocery list", my_items_path  %>
+
+
+
+<div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>

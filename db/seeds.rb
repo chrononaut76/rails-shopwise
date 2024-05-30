@@ -69,40 +69,39 @@ puts "  Created #{Store.create!(
   name: 'IGA',
   address: '900 Rue Saint-Zotique, Montreal, Quebec H2S 1M8',
   image_url: Faker::Internet.url,
-  longitude: '-73.6058557033521',
-  latitude: '45.540405601234106'
+  longitude: '-73.60587581893765',
+  latitude: '45.538247238071754'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'Metro',
   address: '1293 Laurier Ave E, Montreal, Quebec H2J 1H2',
   image_url: Faker::Internet.url,
-  longitude: '-73.6130655321097',
-  latitude: '45.54229967357296'
+  longitude: '-73.5846618087831',
+  latitude: '45.53301240423875'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'PA',
   address: '5242 Park Ave, Montreal, Quebec H2V 4G7',
   image_url: Faker::Internet.url,
-  longitude: '-73.59847123862279',
-  latitude: '45.52086325572466',
+  longitude: '-73.59859593459966',
+  latitude: '45.520535550344015'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'Provigo',
   address: '2386 Lucerne Rd, Mount Royal, Quebec H3R 2J8',
   image_url: Faker::Internet.url,
-  longitude: '-73.6625659841291',
-  latitude: '45.5088514440043'
+  longitude: '-73.662023',
+  latitude: '45.506769'
 ).name}"
 puts "\nSeeding stores complete!\n\n"
 
 # Seed 'Items' table
 puts 'Creating items...'
-# url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{EDAMAM_APP_ID}&app_key=#{EDAMAM_API_KEY}&nutrition-type=cooking"
-url = 'https://api.edamam.com/api/food-database/v2/parser?app_id=d8a7c33c&app_key=a657d89a37f29e8c714e10004c9f3613&nutrition-type=cooking'
+url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{ENV.fetch('EDAMAM_APP_ID')}&app_key=#{ENV.fetch('EDAMAM_API_KEY')}&nutrition-type=cooking"
 5.times do
   response = URI.open(url).read
   json = JSON.parse(response)
-  json['hints'].each { |item| Item.create!(name: item.dig('food', 'knownAs')) }
+  json['hints'].each { |item| Item.create!(name: item.dig('food', 'knownAs'), food_id: item.dig('food', 'foodId')) }
   puts "  Created #{Item.count} items"
   next_page = json.dig('_links', 'next', 'href')
   prng = Random.new
@@ -131,13 +130,13 @@ puts 'Creating store items with prices...'
 Item.all.each do |item|
   Store.all.each do |store|
     dollars = (0.0..9.0).step(1).to_a.sample
-    cents = ((10.0..90.0).step(10).to_a.sample + 9.0)/100
+    cents = ((10.0..90.0).step(10).to_a.sample + 9.0) / 100
     StoreItem.create!(
       store_id: store.id,
       item_id: item.id,
       price: (dollars + cents).round(2)
     )
-    puts "  Created #{StoreItem.count} store items" if StoreItem.count % 40 == 0
+    puts "  Created #{StoreItem.count} store items" if (StoreItem.count % 40).zero?
   end
 end
 puts "\nSeeding store items complete!"
