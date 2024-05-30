@@ -5,7 +5,7 @@ class Store < ApplicationRecord
   has_many :store_items
   has_many :items, through: :store_items
 
-  validates :name, :address, presence: true
+  validates :name, :address, :latitude, :longitude, presence: true
 
   # def self.nearby(latitude, longitude, distance_in_kms = 50)
   def self.nearby(latitude, longitude, distance_in_kms)
