@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .my-items-container {
   background-image: url('logo_background/list_background.png'),url('logo_background/grocery.png');
   background-size: contain, 120px;
@@ -12,6 +13,62 @@ h1 {
  color: #0A4D71;
  font-size: 52px;
  font-weight: lighter;
+=======
+body {
+  background-color: white;
+  background-image: url('logo_background/list_background.png');
+  background-size: contain;
+  background-position: center 82%;
+  background-repeat: no-repeat;
+  padding: 20px;
+  height: 600px;
+  position: relative;
+  overflow-y: auto;
+}
+
+
+.delete-link {
+  color: #0A4D71;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.delete-link:hover {
+  color: #05536d;
+}
+
+.item-checkbox {
+  margin-right: 10px;
+}
+
+.card-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.card-body:last-child {
+  border-bottom: none;
+}
+
+.card-title {
+  font-size: 18px;
+  color: #0A4D71;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+#empty-message {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+>>>>>>> parent of 31c6c25 (styled teh search bar but not final)
 }
 
 body{
@@ -32,3 +89,31 @@ body{
   text-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   background-color: transparent !important;
 }
+<<<<<<< HEAD
+=======
+
+h1 {
+  color: #0A4D71;
+  font-size: 52px;
+  font-weight: lighter;
+}
+
+.find-deals-button {
+  display: block;
+  width: calc(100% - 40px);
+  padding: 10px;
+  margin: 20px auto;
+  background-color: #0A4D71;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.find-deals-button:hover {
+  background-color: #05536d;
+}
+>>>>>>> parent of 31c6c25 (styled teh search bar but not final)
