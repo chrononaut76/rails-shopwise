@@ -11,9 +11,13 @@
     <script src="https://kit.fontawesome.com/8416fec96b.js" crossorigin="anonymous"></script>
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+  <body>
+    <%# Conditionally render navbar based on whether it's the homepage or not %>
+    <% unless current_page?(root_path) %>
+      <%= render "shared/navbar" %>
+    <% end %>
 
+    <%= render "shared/flashes" %>
     <%= yield %>
   </body>
 </html>
