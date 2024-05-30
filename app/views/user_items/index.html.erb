@@ -42,6 +42,8 @@
   </div>
 </div>
 
-<div class="find-deals-button-container">
-  <button class="find-deals-button">Find Best Deals</button>
-</div>
+<% if @user_items.any? %>
+  <div class="find-deals-button-container">
+    <%= link_to 'Find Best Deals', stores_results_path, class: 'find-deals-button btn btn-primary' %>
+  </div>
+<% end %>
