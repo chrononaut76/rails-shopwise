@@ -14,6 +14,8 @@
         <%= image_tag 'profile_pictures/carlo_profile.jpg', class: 'avatar avatar-custom', alt: 'avatar' %>
       </div>
       <%= link_to "Start Shopping!", my_items_path, class: "btn btn-dark text-center mt-10 custom-blue-btn" %>
+    <% else %>
+      <%= link_to "Log In", new_user_session_path, class: "btn btn-dark text-center mt-10 custom-blue-btn" %>
     <% end %>
   </div>
 </div>
