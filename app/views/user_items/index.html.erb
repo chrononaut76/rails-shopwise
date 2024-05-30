@@ -44,6 +44,6 @@
 
 <% if @user_items.any? %>
   <div class="find-deals-button-container">
-    <%= link_to 'Find Best Deals', stores_results_path, class: 'find-deals-button btn btn-primary' %>
+    <%= link_to 'Find Best Deals', stores_results_path(list: @item_ids), class: 'find-deals-button btn btn-primary' %>
   </div>
 <% end %>
