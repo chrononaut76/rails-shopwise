@@ -1,14 +1,29 @@
-<div class="container-page">
 <div class="my-items-container" data-controller="toggle-empty-message">
   <h1 class="text-center">Grocery List</h1>
 
-  <%= render "form" %>
+  <div data-controller="search-items">
+    <%= simple_form_for my_items_path, method: :get, data: { search_items_target: 'form' }, html: { class: 'search-form' } do %>
+      <div class="search-bar" data-search-items-target="bar">
+        <input class="form-control search-input"
+               data-search-items-target="input"
+               data-action="keyup->search-items#results"
+               placeholder="Add items to your list"
+               type="text"
+               name="query"
+               id="search_query">
+        <i class="fas fa-search fa-magnifying-glass" data-action="click->search-items#submitForm" aria-hidden="true"></i>
+      </div>
+      <div class="search-results" id="search-results" data-search-items-target="results">
+        <%= render "results" %>
+      </div>
+    <% end %>
+  </div>
 
   <div class="row">
     <div class="col">
       <div class="cards" id="items-list" data-toggle-empty-message-target="itemsList">
         <% @user_items.each do |user_item| %>
-          <div class="card-body" data-item-id="<%= user_item.id %>">
+          <div class="card-body list-group-item" data-item-id="<%= user_item.id %>">
             <input type="checkbox" class="item-checkbox" data-action="change->toggle-empty-message#moveItemToBottom">
             <h5 class="card-title"><%= user_item.item.name %>
               <%= link_to my_item_path(user_item), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-link" do %>
@@ -21,10 +36,12 @@
     </div>
   </div>
 
-  <div id="empty-message" data-toggle-empty-message-target="emptyMessageContainer">
-    <p class="empty-list-text">Your shopping list is empty!</p>
+  <div id="empty-message" data-toggle-empty-message-target="emptyMessageContainer" class="empty-list-message">
+    <i class="fas fa-shopping-cart"></i>
+    Your shopping list is empty!
   </div>
 </div>
 
-<button class="find-deals-button">Find Best Deals</button>
+<div class="find-deals-button-container">
+  <button class="find-deals-button">Find Best Deals</button>
 </div>
