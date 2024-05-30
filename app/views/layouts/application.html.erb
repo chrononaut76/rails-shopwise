@@ -11,8 +11,11 @@
   </head>
 
   <body>
-    <%# TODO add condition to remove navbar from homepage %>
-    <%# <%= render "shared/navbar" %>
+    <%# Conditionally render navbar based on whether it's the homepage or not %>
+    <% unless current_page?(root_path) %>
+      <%= render "shared/navbar" %>
+    <% end %>
+
     <%= render "shared/flashes" %>
     <%= yield %>
   </body>
