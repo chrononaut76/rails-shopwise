@@ -32,6 +32,9 @@ class UserItemsController < ApplicationController
   end
 
   def recipes
+    # raise
+    @user_items = UserItem.where(user_id: current_user.id)
+    authorize @user_items
   end
 
   private
