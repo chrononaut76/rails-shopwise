@@ -1,0 +1,39 @@
+/* app/assets/stylesheets/login_styles.css */
+
+h2 {
+  position: absolute;
+  color: #05536d;
+  font-size: 54px;
+  text-shadow: 3px 3px 8px #000000;
+  font-weight: bold;
+  left: 114px; /* X-coordinate */
+  top: 200px; /* Y-coordinate */
+}
+
+
+.background-container-login {
+  background-color: #0A4D71;
+  background-image: url('logo_background/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.container-login {
+  width: calc(390px - 2 * 16px);
+  height: calc(844px - 2 * 16px);
+  margin: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
