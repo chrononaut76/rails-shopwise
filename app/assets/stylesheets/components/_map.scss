@@ -1,13 +1,15 @@
 
 .back-button{
   position: absolute;
-  top: 50px;
-  left: 5px;
+  top: 40px;
+  left: 20px;
   z-index: 2;
 }
 
 .fa-border{
-  border: .08em solid #0A4D71 !important;
+  color: #0A4D71;
+  background-color: #c9c9c9;
+  border: .08em solid #c9c9c9 !important;
   border-radius: 50% !important ;
   padding: .2em .25em .15em !important;
   box-shadow: 2px 5px 7px grey;
