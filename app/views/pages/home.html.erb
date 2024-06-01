@@ -9,7 +9,9 @@
       <div class="user-greeting-home text-center">
         <h1 class="text-center">
           <span class="welcome-text-home">Welcome! </span>
-          <span class="user-email-home"><%= current_user.email.match(/[^@.]*/).to_s.capitalize %></span>
+          <div class="user-info">
+            <span class="user-email-home"><%= current_user.email.match(/[^@.]*/).to_s.capitalize %></span>
+          </div>
         </h1>
         <div class="d-flex justify-content-center align-items-center">
           <%= image_tag 'profile_pictures/carlo_profile.jpg', class: 'avatar-custom-home', alt: 'avatar' %>
