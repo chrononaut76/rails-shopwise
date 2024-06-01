@@ -1,1 +1,19 @@
-<h1 class="text-center">Recipe</h1>
+<div class="recipe">
+  <h1 class="recipe-name"><%= @recipe.name %></h1>
+
+  <div class="recipe-image">
+    < ="<%= @recipe.image_url %>" alt="<%= @recipe.name %>" />
+  </div>
+
+  <div class="recipe-details">
+    <h2>Ingredients</h2>
+    <ul>
+      <% @recipe.ingredients.each do |ingredient| %>
+        <li><%= ingredient %></li>
+      <% end %>
+    </ul>
+
+    <h2>Instructions</h2>
+    <p><%= @recipe.instructions %></p>
+  </div>
+</div>
