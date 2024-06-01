@@ -69,29 +69,29 @@ puts "  Created #{Store.create!(
   name: 'IGA',
   address: '900 Rue Saint-Zotique, Montreal, Quebec H2S 1M8',
   image_url: Faker::Internet.url,
-  longitude: '-73.60587581893765',
-  latitude: '45.538247238071754'
+  # longitude: '-73.60587581893765',
+  # latitude: '45.538247238071754'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'Metro',
   address: '1293 Laurier Ave E, Montreal, Quebec H2J 1H2',
   image_url: Faker::Internet.url,
-  longitude: '-73.5846618087831',
-  latitude: '45.53301240423875'
+  # longitude: '-73.5846618087831',
+  # latitude: '45.53301240423875'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'PA',
   address: '5242 Park Ave, Montreal, Quebec H2V 4G7',
   image_url: Faker::Internet.url,
-  longitude: '-73.59859593459966',
-  latitude: '45.520535550344015'
+  # longitude: '-73.59859593459966',
+  # latitude: '45.520535550344015'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'Provigo',
   address: '2386 Lucerne Rd, Mount Royal, Quebec H3R 2J8',
   image_url: Faker::Internet.url,
-  longitude: '-73.662023',
-  latitude: '45.506769'
+  # longitude: '-73.662023',
+  # latitude: '45.506769'
 ).name}"
 puts "\nSeeding stores complete!\n\n"
 
