@@ -1,23 +1,32 @@
 <div class="background-container-home">
-  <div class="container-home">
-    <div class="logo-container-home">
-      <div></div>
-      <%= image_tag 'logo_background/logo.png', alt: 'Logo', class: 'logo-home' %>
-      <div></div>
-    </div>
-    <div class="user-greeting-home text-center">
-      <% if user_signed_in? %>
+  <% if user_signed_in? %>
+    <div class="container-home">
+      <div class="logo-container-home">
+        <div></div>
+        <%= image_tag 'logo_background/logo.png', alt: 'Logo', class: 'logo-home' %>
+        <div></div>
+      </div>
+      <div class="user-greeting-home text-center">
         <h1 class="text-center">
           <span class="welcome-text-home">Welcome! </span>
-          <span class="user-email-home"><%= current_user.email.match(/[^@.]*/).to_s.capitalize %></span>
+          <div class="user-info">
+            <span class="user-email-home"><%= current_user.email.match(/[^@.]*/).to_s.capitalize %></span>
+          </div>
         </h1>
         <div class="d-flex justify-content-center align-items-center">
           <%= image_tag 'profile_pictures/carlo_profile.jpg', class: 'avatar-custom-home', alt: 'avatar' %>
         </div>
         <%= link_to "Start Shopping!", my_items_path, class: "btn btn-dark text-center mt-10 custom-blue-btn-home" %>
-      <% else %>
-        <%= link_to "Log In", new_user_session_path, class: "btn btn-dark text-center mt-10 custom-blue-btn-home" %>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <div class="logo-container-home-logged-out">
+      <%= image_tag 'logo_background/logo.png', alt: 'Logo', class: 'logo-home' %>
+    </div>
+    <div class="btn-container-logged-out">
+      <h1 class="text-center welcome-text-home-logged-out">Welcome!</h1>
+      <%= link_to "Log In", new_user_session_path, class: "btn btn-dark text-center mt-10 custom-blue-btn-home-logged-out" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-dark text-center mt-10 custom-blue-btn-home-logged-out" %>
+    </div>
+  <% end %>
 </div>

@@ -24,7 +24,7 @@
   box-sizing: border-box;
   overflow: hidden;
 }
-
+// button
 .custom-blue-btn-home {
   background-color: #0A4D71;
   height: 58px;
@@ -37,8 +37,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 336px;
 }
-
+// avatar
 .avatar-custom-home {
   width: 176px;
   height: 176px;
@@ -47,7 +48,7 @@
   object-position: center 10%;
   margin-top: 30px;
 }
-
+// greeting
 .user-greeting-home {
   margin-top: 80px;
   text-align: center;
@@ -58,6 +59,7 @@
   font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   line-height: 1.2;
+  margin-top: 140px;
 }
 
 .welcome-text-home {
@@ -67,16 +69,89 @@
 .user-email-home {
   font-size: 32px;
 }
-
+// shopwise logo
 .logo-container-home {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  position: absolute;
+  left: 2px;
+  top: 64px;
 }
 
 .logo-home {
-  width: 350px; /* Set the desired width */
-  height: 200px; /* Set the desired height */
+  width: 350px;
+  height: 200px;
+}
+
+// css for if the user is not logged in
+
+// background
+.background-container-home.logged-out {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.container-home.logged-out {
+  width: calc(390px - 2 * 16px);
+  height: calc(844px - 2 * 16px);
+  margin: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+// button
+.custom-blue-btn-home-logged-out {
+  background-color: #0A4D71;
+  height: 58px;
+  font-weight: bold;
+  font-size: 22px;
+  text-align: center;
+  line-height: 58px;
+  margin-top: 55px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 336px;
+}
+
+.btn-container-logged-out {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+// logo
+.logo-container-home-logged-out {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  position: absolute;
+  left: 2px;
+  top: 64px;
+}
+
+.logo-home.logged-out {
+  width: 350px;
+  height: 200px;
+}
+
+// welcome text
+.welcome-text-home-logged-out {
+  font-size: 40px;
+  color: #0A4D71;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  line-height: 1.2;
+  margin-top: 50px;
+  text-align: center;
 }

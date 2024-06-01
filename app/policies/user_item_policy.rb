@@ -12,6 +12,10 @@ class UserItemPolicy < ApplicationPolicy
     end
   end
 
+  def recipes?
+    true
+  end
+
   def create?
     record.user == user
   end
