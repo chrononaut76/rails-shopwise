@@ -1,9 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
-
 // Connects to data-controller="search-items"
 export default class extends Controller {
   static targets = ['form', 'input', 'results', 'bar'];
-
   results() {
     const query = this.inputTarget.value.trim().toLowerCase();
     if (query.length > 0) {
@@ -20,7 +18,6 @@ export default class extends Controller {
       this.barTarget.classList.remove('results-visible');
     }
   }
-
   submitForm(event) {
     event.preventDefault();
   }

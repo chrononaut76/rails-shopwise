@@ -1,6 +1,5 @@
 <div class="my-items-container" data-controller="toggle-empty-message">
   <h1 class="text-center">Grocery List</h1>
-
   <div data-controller="search-items">
     <%= simple_form_for my_items_path, method: :get, data: { search_items_target: 'form' }, html: { class: 'search-form' } do %>
       <div class="search-bar" data-search-items-target="bar">
@@ -18,14 +17,13 @@
       </div>
     <% end %>
   </div>
-
   <div class="row">
     <div class="col">
       <div class="cards" id="items-list" data-toggle-empty-message-target="itemsList">
         <% @user_items.each do |user_item| %>
           <div class="card-body list-group-item" data-item-id="<%= user_item.id %>">
             <input type="checkbox" class="item-checkbox" data-action="change->toggle-empty-message#moveItemToBottom">
-            <h5 class="card-title"><%= user_item.item.name %>
+            <h5 class="card-title text-start"><%= user_item.item.name %>
               <%= link_to my_item_path(user_item), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-link" do %>
                 <i class="fas fa-trash-alt"></i>
               <% end %>
@@ -35,13 +33,11 @@
       </div>
     </div>
   </div>
-
   <div id="empty-message" data-toggle-empty-message-target="emptyMessageContainer" class="empty-list-message">
     <i class="fas fa-shopping-cart"></i>
     Your shopping list is empty!
   </div>
 </div>
-
 <% if @user_items.any? %>
   <div class="find-deals-button-container">
     <%= link_to 'Find Best Deals', stores_results_path(list: @item_ids), class: 'find-deals-button btn btn-primary' %>
