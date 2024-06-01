@@ -73,9 +73,9 @@ class UserItemsController < ApplicationController
       model: "gpt-3.5-turbo",
       messages: [{
         role: "user",
-        content: "Give me a list of recipes with ingredients #{ingredients.join}. Give me only the text of the recipe, without any of your own answer like 'Here is a simple recipe'."
+        content: "Give me a list of recipes with ingredients #{ingredients.join}, the quantities as a list, and preparation instructions as a paragraph."
       }]
     })
-    response["choices"]
+    response["choices"][0]["message"]["content"]
   end
 end

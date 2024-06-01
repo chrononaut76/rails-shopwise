@@ -1,3 +1,4 @@
-<h1 class="text-center">Recipes</h1>
-<%= p @recipes_list %>
-
+<h1 class="text-center">Recipe Ideas</h1>
+<% @recipes_list.lines.each do |line| %>
+  <%= tag.p line.chomp %>
+<% end %> 
