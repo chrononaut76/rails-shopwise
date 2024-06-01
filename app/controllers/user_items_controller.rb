@@ -32,8 +32,8 @@ class UserItemsController < ApplicationController
   end
 
   def recipes
-    # raise
     @user_items = UserItem.where(user_id: current_user.id)
+    @recipes_list = recipes_list(@user_items)
     authorize @user_items
   end
 
@@ -61,5 +61,21 @@ class UserItemsController < ApplicationController
         price: (dollars + cents).round(2)
       )
     end
+  end
+
+  def recipes_list(user_items)
+    ingredients = []
+    user_items.each do |user_item|
+      ingredients << Item.find(user_item.item_id).name
+    end
+    client = OpenAI::Client.new
+    response = client.chat(parameters: {
+      model: "gpt-3.5-turbo",
+      messages: [{
+        role: "user",
+        content: "Give me a list of recipes with ingredients #{ingredients.join}. Give me only the text of the recipe, without any of your own answer like 'Here is a simple recipe'."
+      }]
+    })
+    response["choices"]
   end
 end
