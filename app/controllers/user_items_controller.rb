@@ -31,6 +31,12 @@ class UserItemsController < ApplicationController
     redirect_to my_items_path, status: :see_other
   end
 
+  def recipes
+    # raise
+    @user_items = UserItem.where(user_id: current_user.id)
+    authorize @user_items
+  end
+
   private
 
   def query_api
