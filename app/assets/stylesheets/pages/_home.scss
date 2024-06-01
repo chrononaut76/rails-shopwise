@@ -1,1 +1,82 @@
-// Specific CSS for your home-page
+.background-container {
+  background-color: #0A4D71;
+  background-image: url('logo_background/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.container {
+  width: calc(390px - 2 * 16px);
+  height: calc(844px - 2 * 16px);
+  margin: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.custom-blue-btn {
+  background-color: #0A4D71;
+  height: 58px;
+  font-weight: bold;
+  font-size: 22px;
+  text-align: center;
+  line-height: 58px;
+  margin-top: 55px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-custom {
+  width: 176px;
+  height: 176px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 10%;
+  margin-top: 30px;
+}
+
+.user-greeting {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.user-greeting h1 {
+  color: #0A4D71;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  line-height: 1.2;
+}
+
+.welcome-text {
+  font-size: 40px;
+}
+
+.user-email {
+  font-size: 32px;
+}
+
+.logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 350px; /* Set the desired width */
+  height: 200px; /* Set the desired height */
+}
