@@ -124,7 +124,6 @@
   position: absolute;
   left: 50%;
   transform: translate(-50%, 50%);
-  margin-top: 100px;
 }
 
 // logo
@@ -142,4 +141,15 @@
 .logo-home.logged-out {
   width: 350px;
   height: 200px;
+}
+
+// welcome text
+.welcome-text-home-logged-out {
+  font-size: 40px;
+  color: #0A4D71;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  line-height: 1.2;
+  margin-top: 50px;
+  text-align: center;
 }
