@@ -1,4 +1,4 @@
-.background-container {
+.background-container-home {
   background-color: #0A4D71;
   background-image: url('logo_background/background.png');
   background-size: cover;
@@ -12,7 +12,7 @@
   overflow: hidden;
 }
 
-.container {
+.container-home {
   width: calc(390px - 2 * 16px);
   height: calc(844px - 2 * 16px);
   margin: auto;
@@ -25,7 +25,7 @@
   overflow: hidden;
 }
 
-.custom-blue-btn {
+.custom-blue-btn-home {
   background-color: #0A4D71;
   height: 58px;
   font-weight: bold;
@@ -39,7 +39,7 @@
   align-items: center;
 }
 
-.avatar-custom {
+.avatar-custom-home {
   width: 176px;
   height: 176px;
   border-radius: 50%;
@@ -48,27 +48,27 @@
   margin-top: 30px;
 }
 
-.user-greeting {
+.user-greeting-home {
   margin-top: 80px;
   text-align: center;
 }
 
-.user-greeting h1 {
+.user-greeting-home h1 {
   color: #0A4D71;
   font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   line-height: 1.2;
 }
 
-.welcome-text {
+.welcome-text-home {
   font-size: 40px;
 }
 
-.user-email {
+.user-email-home {
   font-size: 32px;
 }
 
-.logo-container {
+.logo-container-home {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -76,7 +76,7 @@
   margin-bottom: 20px;
 }
 
-.logo {
+.logo-home {
   width: 350px; /* Set the desired width */
   height: 200px; /* Set the desired height */
 }

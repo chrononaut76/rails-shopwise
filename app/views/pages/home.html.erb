@@ -1,22 +1,22 @@
-<div class="background-container">
-  <div class="container">
-    <div class="logo-container">
+<div class="background-container-home">
+  <div class="container-home">
+    <div class="logo-container-home">
       <div></div>
-      <%= image_tag 'logo_background/logo.png', alt: 'Logo', class: 'logo' %>
+      <%= image_tag 'logo_background/logo.png', alt: 'Logo', class: 'logo-home' %>
       <div></div>
     </div>
-    <div class="user-greeting text-center">
+    <div class="user-greeting-home text-center">
       <% if user_signed_in? %>
         <h1 class="text-center">
-          <span class="welcome-text">Welcome! </span>
-          <span class="user-email"><%= current_user.email.match(/[^@.]*/).to_s.capitalize %></span>
+          <span class="welcome-text-home">Welcome! </span>
+          <span class="user-email-home"><%= current_user.email.match(/[^@.]*/).to_s.capitalize %></span>
         </h1>
         <div class="d-flex justify-content-center align-items-center">
-          <%= image_tag 'profile_pictures/carlo_profile.jpg', class: 'avatar avatar-custom', alt: 'avatar' %>
+          <%= image_tag 'profile_pictures/carlo_profile.jpg', class: 'avatar-custom-home', alt: 'avatar' %>
         </div>
-        <%= link_to "Start Shopping!", my_items_path, class: "btn btn-dark text-center mt-10 custom-blue-btn" %>
+        <%= link_to "Start Shopping!", my_items_path, class: "btn btn-dark text-center mt-10 custom-blue-btn-home" %>
       <% else %>
-        <%= link_to "Log In", new_user_session_path, class: "btn btn-dark text-center mt-10 custom-blue-btn" %>
+        <%= link_to "Log In", new_user_session_path, class: "btn btn-dark text-center mt-10 custom-blue-btn-home" %>
       <% end %>
     </div>
   </div>
