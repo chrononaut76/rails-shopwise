@@ -1,6 +1,6 @@
-<div class="my-items-container" data-controller="toggle-empty-message">
+<div class="my-items-container" data-controller="search-items">
   <h1 class="text-center">Grocery List</h1>
-  <div data-controller="search-items">
+  <div>
     <%= simple_form_for my_items_path, method: :get, data: { search_items_target: 'form' }, html: { class: 'search-form' } do %>
       <div class="search-bar" data-search-items-target="bar">
         <input class="form-control search-input"
@@ -19,10 +19,10 @@
   </div>
   <div class="row">
     <div class="col">
-      <div class="cards" id="items-list" data-toggle-empty-message-target="itemsList">
+      <div class="cards" id="items-list" data-search-items-target="itemsList">
         <% @user_items.each do |user_item| %>
           <div class="card-body list-group-item" data-item-id="<%= user_item.id %>">
-            <input type="checkbox" class="item-checkbox" data-action="change->toggle-empty-message#moveItemToBottom">
+            <input type="checkbox" class="item-checkbox" data-action="change->search-items#toggleEmptyMessage">
             <h5 class="card-title text-start"><%= user_item.item.name %>
               <%= link_to my_item_path(user_item), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-link" do %>
                 <i class="fas fa-trash-alt"></i>
@@ -33,13 +33,18 @@
       </div>
     </div>
   </div>
-  <div id="empty-message" data-toggle-empty-message-target="emptyMessageContainer" class="empty-list-message">
-    <i class="fas fa-shopping-cart"></i>
-    Your shopping list is empty!
-  </div>
+  <% if @user_items.empty? %>
+    <div id="empty-message" class="empty-list-message">
+      <div class="empty-message-content">
+        <div class="empty-image"></div>
+        Your shopping list is empty!
+      </div>
+    </div>
+  <% end %>
+  <% if @user_items.any? %>
+    <div class="find-deals-button-container">
+      <%= link_to 'Find Best Deals', stores_results_path(list: @item_ids), class: 'find-deals-button btn btn-primary' %>
+      <%= link_to 'Generate Recipe', recipes_my_items_path(list: @recipe_ids), class: 'generate-recipe-button btn btn-primary' %>
+    </div>
+  <% end %>
 </div>
-<% if @user_items.any? %>
-  <div class="find-deals-button-container">
-    <%= link_to 'Find Best Deals', stores_results_path(list: @item_ids), class: 'find-deals-button btn btn-primary' %>
-  </div>
-<% end %>

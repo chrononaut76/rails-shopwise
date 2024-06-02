@@ -1,8 +1,94 @@
+.hidden {
+  display: none;
+}
+
+.my-items-container {
+  background-image: url('logo_background/list_background.png');
+  background-size: contain;
+  background-position: center 82%;
+  background-repeat: no-repeat;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+#empty-message {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.empty-message-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: auto;
+}
+
+.empty-image {
+  width: 120px;
+  height: 120px;
+  background-image: image-url('logo_background/grocery.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.empty-list-message {
+  text-align: center;
+  padding: 20px;
+  color: #0A4D71;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.empty-list-message i {
+  margin-bottom: 10px;
+  font-size: 24px;
+  display: block;
+}
+
+.find-deals-button-container {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  position: absolute;
+  bottom: 120px;
+}
+
+.find-deals-button, .generate-recipe-button {
+  display: inline-block;
+  padding: 10px;
+  background-color: #0A4D71;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+}
+
+.find-deals-button:hover, .generate-recipe-button:hover {
+  background-color: #05536D;
+}
+
 .search-form {
   margin: 10px 0;
   display: flex;
   justify-content: center;
-  position: relative; /* Ensure position relative for dropdown */
+  position: relative;
 }
 
 .search-bar {
@@ -115,30 +201,6 @@
   margin-right: 10px;
 }
 
-.empty-list-message {
-  text-align: center;
-  padding: 20px;
-  color: #0A4D71;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.empty-list-message i {
-  margin-bottom: 10px;
-  font-size: 24px;
-  display: block;
-}
-
-.my-items-container {
-  background-image: url('logo_background/list_background.png');
-  background-size: contain;
-  background-position: center 82%;
-  background-repeat: no-repeat;
-  padding: 20px;
-  min-height: 100vh;
-  position: relative;
-}
-
 h1 {
   color: #0A4D71;
   font-size: 52px;
@@ -195,38 +257,11 @@ body {
 }
 
 .delete-link:hover {
-  color: #05536d;
+  color: #05536D;
 }
 
 .item-checkbox {
   margin-right: 10px;
-}
-
-.find-deals-button-container {
-  text-align: center;
-  position: absolute;
-  bottom: 20px;
-  width: 100%;
-  box-sizing: border-box;
-  background: none;
-}
-
-.find-deals-button {
-  display: inline-block;
-  width: calc(100% - 40px);
-  padding: 10px;
-  background-color: #0A4D71;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.find-deals-button:hover {
-  background-color: #05536d;
 }
 
 .cards {
