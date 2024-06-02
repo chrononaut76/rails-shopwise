@@ -58,6 +58,7 @@ gem "open-uri"
 gem "nokogiri"
 gem "watir"
 gem "pg_search"
+gem "ruby-openai"
 
 group :development, :test do
   gem "dotenv-rails"
