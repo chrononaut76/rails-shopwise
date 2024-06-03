@@ -1,22 +1,38 @@
-<%# <% @recipes.each do |recipe| %>
-<%# <% end %>
+<div class="my-items-container" data-controller="toggle-empty-message">
 
-<div class="recipe">
-  <h1 class="recipe-name"><%= @recipe.name %></h1>
+  <h1 class="text-center">Recipe Ideas</h1>
 
-  <div class="recipe-image">
-    < ="<%= @recipe.image_url %>" alt="<%= @recipe.name %>" />
-  </div>
+  <% current_recipe = { name: "", ingredients: [], instructions: [] } %>
+  <% in_ingredients = false %>
+  <% in_instructions = false %>
 
-  <div class="recipe-details">
-    <h2>Ingredients</h2>
-    <ul>
-      <% @recipe.ingredients.each do |ingredient| %>
-        <li><%= ingredient %></li>
+  <% @recipes_list.lines.each do |line| %>
+    <% line = line.chomp %>
+    <% if line.match?(/^\d+\./) %>
+      <% if current_recipe[:name].present? %>
+        <div class="recipe-container">
+          <h4><%= current_recipe[:name] %></h4>
+          <img src="" alt="Recipe Image">
+          <p><strong>Ingredients:</strong></p>
+          <ul>
+            <% current_recipe[:ingredients].each do |ingredient| %>
+              <li><%= ingredient %></li>
+            <% end %>
+          </ul>
+          <p><strong>Instructions:</strong></p>
+          <p><%= current_recipe[:instructions].join(" ") %></p>
+        </div>
       <% end %>
-    </ul>
-
-    <h2>Instructions</h2>
-    <p><%= @recipe.instructions %></p>
-  </div>
+      <% current_recipe = { name: "", ingredients: [], instructions: [] } %>
+      <% current_recipe[:name] = line.sub(/^\d+\./, "").strip %>
+    <% elsif line.start_with?("-") %>
+      <% in_ingredients = true %>
+      <% in_instructions = false %>
+      <% current_recipe[:ingredients] << line.sub("-", "").strip if in_ingredients %>
+    <% else %>
+      <% in_ingredients = false %>
+      <% in_instructions = true %>
+      <% current_recipe[:instructions] << line.strip if in_instructions %>
+    <% end %>
+  <% end %>
 </div>
