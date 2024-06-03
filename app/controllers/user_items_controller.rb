@@ -1,4 +1,6 @@
 class UserItemsController < ApplicationController
+  caches_action :recipes_list
+
   def index
     @user_items = policy_scope(UserItem)
     @items = policy_scope(Item)

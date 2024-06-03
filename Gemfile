@@ -59,6 +59,7 @@ gem "nokogiri"
 gem "watir"
 gem "pg_search"
 gem "ruby-openai"
+gem "actionpack-action_caching"
 
 group :development, :test do
   gem "dotenv-rails"
