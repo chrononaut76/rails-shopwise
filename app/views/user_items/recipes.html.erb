@@ -35,4 +35,19 @@
       <% current_recipe[:instructions] << line.strip if in_instructions %>
     <% end %>
   <% end %>
+
+  <% if current_recipe[:name].present? %>
+    <div class="recipe-container">
+      <h4><%= current_recipe[:name] %></h4>
+      <img src="" alt="Recipe Image">
+      <p><strong>Ingredients:</strong></p>
+      <ul>
+        <% current_recipe[:ingredients].each do |ingredient| %>
+          <li><%= ingredient %></li>
+        <% end %>
+      </ul>
+      <p><strong>Instructions:</strong></p>
+      <p><%= current_recipe[:instructions].join(" ") %></p>
+    </div>
+  <% end %>
 </div>
