@@ -1,4 +1,3 @@
-
 html, body {
   overflow: hidden;
   margin: 0;
@@ -11,9 +10,8 @@ html, body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  width: 390px;
-  height: 844px;
-  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,8 +20,9 @@ html, body {
 }
 
 .container-login {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  max-width: 390px;
+  height: auto;
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -44,7 +43,7 @@ h2 {
   font-size: 54px;
   text-shadow: 3px 3px 8px #000000;
   font-weight: bold;
-  margin-bottom: 40px;
+  margin-bottom: 152px;
 }
 
 .login-button-signin {
@@ -69,7 +68,15 @@ h2 {
   font-weight: bold;
 }
 
-// .signup-button-login {
-//   font-weight: bold;
-//   color: #0A4D71;
-// }
+label[for="user_email"],
+label[for="user_password"] {
+  color: #0A4D71;
+  font-weight: bold;
+}
+
+.sign-up-btn-login {
+  color: #0A4D71;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 24px;
+}
