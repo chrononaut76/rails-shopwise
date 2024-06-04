@@ -1,15 +1,9 @@
-/* app/assets/stylesheets/login_styles.css */
 
-h2 {
-  position: absolute;
-  color: #05536d;
-  font-size: 54px;
-  text-shadow: 3px 3px 8px #000000;
-  font-weight: bold;
-  left: 114px; /* X-coordinate */
-  top: 200px; /* Y-coordinate */
+html, body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
-
 
 .background-container-login {
   background-color: #0A4D71;
@@ -17,23 +11,65 @@ h2 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
-  margin: 0;
+  width: 390px;
+  height: 844px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  position: relative;
 }
 
 .container-login {
-  width: calc(390px - 2 * 16px);
-  height: calc(844px - 2 * 16px);
-  margin: auto;
+  width: 100%;
+  height: 100%;
   padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  overflow: hidden;
+  position: relative;
 }
+
+.form-actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+h2 {
+  color: #0A4D71;
+  font-size: 54px;
+  text-shadow: 3px 3px 8px #000000;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.login-button-signin {
+  width: 336px;
+  height: 58px;
+  background-color: #0A4D71;
+  color: white;
+  border: none;
+  font-size: 22px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.or-text {
+  color: #0A4D71;
+  font-size: 20px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+// .signup-button-login {
+//   font-weight: bold;
+//   color: #0A4D71;
+// }

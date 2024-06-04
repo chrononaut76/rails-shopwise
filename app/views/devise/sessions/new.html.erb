@@ -17,10 +17,11 @@
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Log in" %>
+        <%= f.button :submit, "Log In", class: "login-button-signin" %>
       </div>
     <% end %>
 
-    <%= render "devise/shared/links" %>
+    <div class="or-text">or</div> <!-- New div for "or" text -->
+      <%= link_to "Sign up", new_registration_path(resource_name) %><br />
   </div>
 </div>
