@@ -68,28 +68,56 @@ puts 'Creating stores...'
 puts "  Created #{Store.create!(
   name: 'IGA',
   address: '900 Rue Saint-Zotique, Montreal, Quebec H2S 1M8',
-  image_url: Faker::Internet.url,
+  image_url: 'https://lh3.googleusercontent.com/p/AF1QipNzXIZMV72kFHNKXYSplOptzskjABtttTgRq2La=s1360-w1360-h1020',
   # longitude: '-73.60587581893765',
   # latitude: '45.538247238071754'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'Metro',
   address: '1293 Laurier Ave E, Montreal, Quebec H2J 1H2',
-  image_url: Faker::Internet.url,
+  image_url: 'https://lh5.googleusercontent.com/-qgyoULa4YbI/V0uVJ3dx56I/AAAAAAAAi10/MXU45riP6FoqltvxMZ4_OrLZVlk8-4vRwCLIB/s1600-w640/',
   # longitude: '-73.5846618087831',
   # latitude: '45.53301240423875'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'PA',
   address: '5242 Park Ave, Montreal, Quebec H2V 4G7',
-  image_url: Faker::Internet.url,
+  image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHqx-pcSk2lEC3U8H6O3BI_uuQFuEz7E_AKQ&s',
   # longitude: '-73.59859593459966',
   # latitude: '45.520535550344015'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'Provigo',
-  address: '2386 Lucerne Rd, Mount Royal, Quebec H3R 2J8',
-  image_url: Faker::Internet.url,
+  address: '50 Mont-Royal Ave W, Montreal, Quebec',
+  image_url: 'https://10619-2.s.cdn12.com/rests/original/104_505295181.jpg',
+  # longitude: '-73.662023',
+  # latitude: '45.506769'
+).name}"
+puts "  Created #{Store.create!(
+  name: 'Intermarché Boyer',
+  address: '1000 Mont-Royal Ave E, Montreal, Quebec',
+  image_url: 'https://mma.prnewswire.com/media/1058031/Intermarch__Boyer_L__picerie_Intermarch__Boyer_fait_12_choix__co.jpg',
+  # longitude: '-73.662023',
+  # latitude: '45.506769'
+).name}"
+puts "  Created #{Store.create!(
+  name: 'Maxi',
+  address: '375 Rue Jean-Talon O, Montreal, Quebec',
+  image_url: 'https://la-gare-jean-talon.weebly.com/uploads/7/8/2/0/78202338/9528564.png',
+  # longitude: '-73.662023',
+  # latitude: '45.506769'
+).name}"
+puts "  Created #{Store.create!(
+  name: 'P&A Nature',
+  address: '5029 Park Ave, Montreal, Quebec',
+  image_url: 'https://lh3.googleusercontent.com/p/AF1QipOE4iP3L1XPAF-OZdrKICgsr5JQalluONUdePHc=s1360-w1360-h1020',
+  # longitude: '-73.662023',
+  # latitude: '45.506769'
+).name}"
+puts "  Created #{Store.create!(
+  name: 'Super C',
+  address: '2035 R. Atateken, Montreal, Quebec',
+  image_url: 'https://lh3.googleusercontent.com/p/AF1QipNw3X0DzU86pQUFXiC5n1dLV02MfhNfjX-BRcyK=s1360-w1360-h1020',
   # longitude: '-73.662023',
   # latitude: '45.506769'
 ).name}"
@@ -129,7 +157,7 @@ puts "Seeding user items complete!\n\n"
 puts 'Creating store items with prices...'
 Item.all.each do |item|
   Store.all.each do |store|
-    dollars = (1.0..3.0).step(1).to_a.sample
+    dollars = (5.0..15.0).step(1).to_a.sample
     cents = ((50.0..70.0).step(10).to_a.sample + 9.0) / 100
     StoreItem.create!(
       store_id: store.id,
