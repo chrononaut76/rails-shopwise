@@ -5,8 +5,8 @@
   <% current_recipe = { name: "", ingredients: [], instructions: [] } %>
 
   <% @recipes_list.lines.each do |line| %>
-    <% line = line.chomp %>
-    <p><%= p line %></p>
+    <%# <% line = line.chomp %>
+    <%# <p><%= p line %>
     <% next if line.length.zero? %>
     <% if line.start_with?(/1\.\s/) %>
       <% current_recipe[:name] = line.sub("1. ", "").strip %>
@@ -28,6 +28,10 @@
     </ul>
     <p><strong>Instructions:</strong></p>
     <p><%= current_recipe[:instructions].join(" ") %></p>
+  </div>
+  <div class="find-deals-button-container">
+    <%= link_to 'Find Best Deals', stores_results_path(list: @item_ids), class: 'find-deals-button btn btn-primary' %>
+    <%= link_to 'My Grocery List', my_items_path(list: @recipe_ids), class: 'generate-recipe-button btn btn-primary' %>
   </div>
 </div>
 
