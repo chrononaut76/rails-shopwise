@@ -6,19 +6,20 @@
 
   <% @recipes_list.lines.each do |line| %>
     <% line = line.chomp %>
-
-    <% if line.start_with?("1. ") %>
+    <p><%= p line %></p>
+    <% next if line.length.zero? %>
+    <% if line.start_with?(/1\.\s/) %>
       <% current_recipe[:name] = line.sub("1. ", "").strip %>
-    <% elsif line.start_with?("- ") %>
+    <% elsif line.start_with?(/-\s/) %>
       <% current_recipe[:ingredients] << line.sub("- ", "").strip %>
-    <% elsif line.start_with?("2. ") %>
+    <% elsif line.start_with?(/2\.\s/) %>
       <% current_recipe[:instructions] << line.sub("2. ", "").strip %>
     <% end %>
   <% end %>
 
   <div class="recipe-container">
     <h4><%= current_recipe[:name] %></h4>
-    <img src="" alt="Recipe Image">
+    <%# <img src="" alt="Recipe Image"> %>
     <p><strong>Ingredients:</strong></p>
     <ul>
       <% current_recipe[:ingredients].each do |ingredient| %>
@@ -29,3 +30,7 @@
     <p><%= current_recipe[:instructions].join(" ") %></p>
   </div>
 </div>
+
+<%# <% @recipes_list.lines.each do |line| %>
+  <%# <%= tag.p line.chomp %>
+<%# <% end %>
