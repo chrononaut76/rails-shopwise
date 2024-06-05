@@ -24,7 +24,7 @@ class StoresController < ApplicationController
                   lat: store.latitude,
                   lng: store.longitude,
                   info_window_html: render_to_string(partial: "info_window", locals: {store: store, store_total: store_total}),
-                  price_category: get_store_type(store_total)
+                  price_category: price_category(store_total)
                 }
             end
     authorize @stores
@@ -32,7 +32,8 @@ class StoresController < ApplicationController
 
   private
 
-  def get_store_type(store_total)
+  def price_category(store_total)
+
     if store_total == @total_by_store.first[:total_price]
       cheapest = store_total
     elsif store_total == @total_by_store.last[:total_price]
