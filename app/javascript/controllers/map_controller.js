@@ -21,7 +21,17 @@ export default class extends Controller {
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
-      new mapboxgl.Marker()
+
+      let color = "#0A4D71"; // default color
+
+      if (marker.price_category === 'cheapest') {
+        color = "#0000ff";
+      } else if (marker.price_category === 'expensive') {
+        color = "#ff0000";
+      }
+
+
+      new mapboxgl.Marker({ "color": color })
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(this.map)
