@@ -78,4 +78,5 @@ class UserItemsController < ApplicationController
     })
     response["choices"][0]["message"]["content"]
   end
+
 end
