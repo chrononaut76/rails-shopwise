@@ -53,7 +53,7 @@ class UserItemsController < ApplicationController
 
   def add_store_item(new_item)
     Store.all.each do |store|
-      dollars = (1.0..3.0).step(1).to_a.sample
+      dollars = (5.0..15.0).step(1).to_a.sample
       cents = ((50.0..70.0).step(10).to_a.sample + 9.0) / 100
       StoreItem.create!(
         store_id: store.id,
