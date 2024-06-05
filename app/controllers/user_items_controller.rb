@@ -73,15 +73,15 @@ class UserItemsController < ApplicationController
       model: "gpt-3.5-turbo",
       messages: [{
         role: "user",
-        content: "Provide a recipe using the following ingredients: #{ingredients.join}, the recipe should follow this specific format
+        content: "Provide a recipe based on the following ingredients: #{ingredients.join}, the recipe should follow this specific format
 
-        1. [Recipe Name]
+        1. [Recipe's Name]
 
         - [Quantity] [Ingredient]
         - [Quantity] [Ingredient]
         - [Quantity] [Ingredient]
 
-        [Write the instructions in one paragraph.]"
+        2. [Write the instructions in one paragraph.]"
       }]
     })
     response["choices"][0]["message"]["content"]
