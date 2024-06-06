@@ -41,7 +41,6 @@ html, body {
 h2 {
   color: #0A4D71;
   font-size: 54px;
-  text-shadow: 3px 3px 8px #000000;
   font-weight: bold;
   margin-bottom: 152px;
 }
@@ -79,4 +78,8 @@ label[for="user_password"] {
   font-weight: bold;
   text-decoration: none;
   font-size: 24px;
+}
+
+input#user_remember_me + label {
+  color: #0A4D71;
 }
