@@ -12,6 +12,7 @@ class StoresController < ApplicationController
     end
     @total_by_store.sort_by! { |hash| hash[:total_price] }
 
+    @total_by_store.each.with_index{|h, i| h[:category] = categorize(i) }
 
     @stores = if params[:latitude].present? && params[:longitude].present?
                 Store.nearby(params[:latitude], params[:longitude])
@@ -20,17 +21,33 @@ class StoresController < ApplicationController
               end
             @markers = @stores.geocoded.map do |store|
               store_total = @total_by_store.select{|h| h[:store] == store.name}.first.dig(:total_price)
+              price_category = @total_by_store.select{|h| h[:store] == store.name}.first.dig(:category)
                 {
                   lat: store.latitude,
                   lng: store.longitude,
-                  info_window_html: render_to_string(partial: "info_window", locals: {store: store, store_total: store_total}),
+                  info_window_html: render_to_string(partial: "info_window", locals: {store: store, store_total: store_total,
+                  price_category: price_category}),
                   price_category: price_category(store_total)
                 }
             end
     authorize @stores
   end
 
-  private
+
+  def categorize(index)
+    case index
+    when 0..2
+      :cheapest
+    when 3..5
+      :affordable
+    when 6..100
+      :expensive
+    end
+  end
+end
+
+
+private
 
   def price_category(store_total)
     if store_total == @total_by_store.first[:total_price]
@@ -45,7 +62,6 @@ class StoresController < ApplicationController
       mid_range: mid_range }
   end
 
-  def exists?(value)
-    value if value
-  end
-end
+  # def exists?(value)
+  #   value if value
+  # end

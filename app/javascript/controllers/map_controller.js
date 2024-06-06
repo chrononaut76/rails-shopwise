@@ -22,10 +22,11 @@ export default class extends Controller {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
 
-      new mapboxgl.Marker({"color": color})
+      new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(this.map)
+        // .setMarkerColor({"color": color})
 }
     )};
 
@@ -35,13 +36,13 @@ export default class extends Controller {
       this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
     };
 
-    #setMarkerColor() {
-      if (marker.price_category === 'cheapest') {
-        color = "#0000ff";
-      } else if (marker.price_category === 'expensive') {
-        color = "#ff0000";
-      } else (marker.price_category === 'mid_range') {
-        color = "#0A4D71";
-      };
-    }
+    // #setMarkerColor() {
+    //   if (marker.price_category === 'cheapest') {
+    //     color = "#0000ff";
+    //   } else if (marker.price_category === 'expensive') {
+    //     color = "#ff0000";
+    //   } else (marker.price_category === 'mid_range') ;{
+    //     color = "#0A4D71";
+    //   };
+    // }
   }
