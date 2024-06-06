@@ -1,38 +1,40 @@
 <div class="my-items-container" data-controller="toggle-empty-message">
 
-  <h1 class="text-center">Recipe Ideas</h1>
+  <h1 class="text-center">Recipe Idea</h1>
 
   <% current_recipe = { name: "", ingredients: [], instructions: [] } %>
-  <% in_ingredients = false %>
-  <% in_instructions = false %>
 
   <% @recipes_list.lines.each do |line| %>
-    <% line = line.chomp %>
-    <% if line.match?(/^\d+\./) %>
-      <% if current_recipe[:name].present? %>
-        <div class="recipe-container">
-          <h4><%= current_recipe[:name] %></h4>
-          <img src="" alt="Recipe Image">
-          <p><strong>Ingredients:</strong></p>
-          <ul>
-            <% current_recipe[:ingredients].each do |ingredient| %>
-              <li><%= ingredient %></li>
-            <% end %>
-          </ul>
-          <p><strong>Instructions:</strong></p>
-          <p><%= current_recipe[:instructions].join(" ") %></p>
-        </div>
-      <% end %>
-      <% current_recipe = { name: "", ingredients: [], instructions: [] } %>
-      <% current_recipe[:name] = line.sub(/^\d+\./, "").strip %>
-    <% elsif line.start_with?("-") %>
-      <% in_ingredients = true %>
-      <% in_instructions = false %>
-      <% current_recipe[:ingredients] << line.sub("-", "").strip if in_ingredients %>
-    <% else %>
-      <% in_ingredients = false %>
-      <% in_instructions = true %>
-      <% current_recipe[:instructions] << line.strip if in_instructions %>
+    <%# <% line = line.chomp %>
+    <%# <p><%= p line %>
+    <% next if line.length.zero? %>
+    <% if line.start_with?(/1\.\s/) %>
+      <% current_recipe[:name] = line.sub("1. ", "").strip %>
+    <% elsif line.start_with?(/-\s/) %>
+      <% current_recipe[:ingredients] << line.sub("- ", "").strip %>
+    <% elsif line.start_with?(/2\.\s/) %>
+      <% current_recipe[:instructions] << line.sub("2. ", "").strip %>
     <% end %>
   <% end %>
+
+  <div class="recipe-container">
+    <h4><%= current_recipe[:name] %></h4>
+    <%# <img src="" alt="Recipe Image"> %>
+    <p><strong>Ingredients:</strong></p>
+    <ul>
+      <% current_recipe[:ingredients].each do |ingredient| %>
+        <li><%= ingredient %></li>
+      <% end %>
+    </ul>
+    <p><strong>Instructions:</strong></p>
+    <p><%= current_recipe[:instructions].join(" ") %></p>
+  </div>
+  <div class="find-deals-button-container">
+    <%= link_to 'Find Best Deals', stores_results_path(list: @item_ids), class: 'find-deals-button btn btn-primary' %>
+    <%= link_to 'My Grocery List', my_items_path(list: @recipe_ids), class: 'generate-recipe-button btn btn-primary' %>
+  </div>
 </div>
+
+<%# <% @recipes_list.lines.each do |line| %>
+  <%# <%= tag.p line.chomp %>
+<%# <% end %>
