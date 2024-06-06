@@ -13,8 +13,8 @@ url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{ENV.fetch('ED
 f = File.open("../storage/edamam.json", "wb")
 5.times do
   response = URI.open(url).read
-  f.write(response)
   json = JSON.parse(response)
+  f.write(json)
   url = json.dig('_links', 'next', 'href')
 end
 f.close
