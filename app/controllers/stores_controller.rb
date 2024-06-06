@@ -27,7 +27,6 @@ class StoresController < ApplicationController
                   lng: store.longitude,
                   info_window_html: render_to_string(partial: "info_window", locals: {store: store, store_total: store_total,
                   price_category: price_category}),
-                  price_category: price_category(store_total)
                 }
             end
     authorize @stores
@@ -37,11 +36,11 @@ class StoresController < ApplicationController
   def categorize(index)
     case index
     when 0..2
-      :cheapest
+      "cheapest"
     when 3..5
-      :affordable
+      "affordable"
     when 6..100
-      :expensive
+      "expensive"
     end
   end
 end

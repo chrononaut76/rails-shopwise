@@ -22,10 +22,23 @@ export default class extends Controller {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
 
-      new mapboxgl.Marker()
+      // setMarkerColor((marker) => {
+      //   if (marker.price_category === 'cheapest') {
+      //     "#0000ff";
+      //   } else if (marker.price_category === 'expensive') {
+      //     "#ff0000";
+      //   } else if (marker.price_category === 'mid_range') {
+      //     "#0A4D71";
+      //   };
+      // })
+      // const color = setMarkerColor(marker);
+
+
+      new mapboxgl.Marker({"color": "#0A4D71" })
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(this.map)
+
         // .setMarkerColor({"color": color})
 }
     )};
