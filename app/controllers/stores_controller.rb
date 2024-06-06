@@ -33,7 +33,6 @@ class StoresController < ApplicationController
   private
 
   def price_category(store_total)
-
     if store_total == @total_by_store.first[:total_price]
       cheapest = store_total
     elsif store_total == @total_by_store.last[:total_price]
