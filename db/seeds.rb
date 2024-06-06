@@ -14,46 +14,31 @@ require 'faker'
 # Purge contents of 'UserItems' table
 unless UserItem.all.empty?
   puts "Purging 'UserItems' table..."
-  UserItem.all.each do |user_item|
-    UserItem.destroy(user_item.id)
-    # puts "  Records remaining: #{UserItem.count}"
-  end
+  UserItem.destroy_all
 end
 
 # Purge contents of 'Users' table
 unless User.all.empty?
   puts "Purging 'Users' table..."
-  User.all.each do |user|
-    User.destroy(user.id)
-    # puts "  Records remaining: #{User.count}"
-  end
+  User.destroy_all
 end
 
 # Purge contents of 'StoreItems' table
 unless StoreItem.all.empty?
   puts "Purging 'StoreItems' table..."
-  StoreItem.all.each do |store_item|
-    StoreItem.destroy(store_item.id)
-    # puts "  Records remaining: #{StoreItem.count}"
-  end
+  StoreItem.destroy_all
 end
 
 # Purge contents of 'Stores' table
 unless Store.all.empty?
   puts "Purging 'Stores' table..."
-  Store.all.each do |store|
-    Store.destroy(store.id)
-    # puts "  Records remaining: #{Store.count}"
-  end
+  Store.destroy_all
 end
 
 # Purge contents of 'Items' table
 unless Item.all.empty?
   puts "Purging 'Items' table..."
-  Item.all.each do |item|
-    Item.destroy(item.id)
-    # puts "  Records remaining: #{Item.count}"
-  end
+  Item.destroy_all
 end
 
 # Seed 'Users' table
@@ -68,23 +53,17 @@ puts 'Creating stores...'
 puts "  Created #{Store.create!(
   name: 'IGA',
   address: '900 Rue Saint-Zotique, Montreal, Quebec H2S 1M8',
-  image_url: 'https://lh3.googleusercontent.com/p/AF1QipNzXIZMV72kFHNKXYSplOptzskjABtttTgRq2La=s1360-w1360-h1020',
-  # longitude: '-73.60587581893765',
-  # latitude: '45.538247238071754'
+  image_url: 'https://lh3.googleusercontent.com/p/AF1QipNzXIZMV72kFHNKXYSplOptzskjABtttTgRq2La=s1360-w1360-h1020'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'Metro',
   address: '1293 Laurier Ave E, Montreal, Quebec H2J 1H2',
-  image_url: 'https://lh5.googleusercontent.com/-qgyoULa4YbI/V0uVJ3dx56I/AAAAAAAAi10/MXU45riP6FoqltvxMZ4_OrLZVlk8-4vRwCLIB/s1600-w640/',
-  # longitude: '-73.5846618087831',
-  # latitude: '45.53301240423875'
+  image_url: 'https://lh5.googleusercontent.com/-qgyoULa4YbI/V0uVJ3dx56I/AAAAAAAAi10/MXU45riP6FoqltvxMZ4_OrLZVlk8-4vRwCLIB/s1600-w640/'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'PA',
   address: '5242 Park Ave, Montreal, Quebec H2V 4G7',
-  image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHqx-pcSk2lEC3U8H6O3BI_uuQFuEz7E_AKQ&s',
-  # longitude: '-73.59859593459966',
-  # latitude: '45.520535550344015'
+  image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHqx-pcSk2lEC3U8H6O3BI_uuQFuEz7E_AKQ&s'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'Provigo',
@@ -96,30 +75,22 @@ puts "  Created #{Store.create!(
 puts "  Created #{Store.create!(
   name: 'Intermarché Boyer',
   address: '1000 Mont-Royal Ave E, Montreal, Quebec',
-  image_url: 'https://mma.prnewswire.com/media/1058031/Intermarch__Boyer_L__picerie_Intermarch__Boyer_fait_12_choix__co.jpg',
-  # longitude: '-73.662023',
-  # latitude: '45.506769'
+  image_url: 'https://mma.prnewswire.com/media/1058031/Intermarch__Boyer_L__picerie_Intermarch__Boyer_fait_12_choix__co.jpg'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'Maxi',
   address: '375 Rue Jean-Talon O, Montreal, Quebec',
-  image_url: 'https://la-gare-jean-talon.weebly.com/uploads/7/8/2/0/78202338/9528564.png',
-  # longitude: '-73.662023',
-  # latitude: '45.506769'
+  image_url: 'https://la-gare-jean-talon.weebly.com/uploads/7/8/2/0/78202338/9528564.png'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'P&A Nature',
   address: '5029 Park Ave, Montreal, Quebec',
-  image_url: 'https://lh3.googleusercontent.com/p/AF1QipOE4iP3L1XPAF-OZdrKICgsr5JQalluONUdePHc=s1360-w1360-h1020',
-  # longitude: '-73.662023',
-  # latitude: '45.506769'
+  image_url: 'https://lh3.googleusercontent.com/p/AF1QipOE4iP3L1XPAF-OZdrKICgsr5JQalluONUdePHc=s1360-w1360-h1020'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'Super C',
   address: '2035 R. Atateken, Montreal, Quebec',
-  image_url: 'https://lh3.googleusercontent.com/p/AF1QipNw3X0DzU86pQUFXiC5n1dLV02MfhNfjX-BRcyK=s1360-w1360-h1020',
-  # longitude: '-73.662023',
-  # latitude: '45.506769'
+  image_url: 'https://lh3.googleusercontent.com/p/AF1QipNw3X0DzU86pQUFXiC5n1dLV02MfhNfjX-BRcyK=s1360-w1360-h1020'
 ).name}"
 puts "\nSeeding stores complete!\n\n"
 
@@ -129,7 +100,14 @@ url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{ENV.fetch('ED
 5.times do
   response = URI.open(url).read
   json = JSON.parse(response)
-  json['hints'].each { |item| Item.create!(name: item.dig('food', 'knownAs').downcase, food_id: item.dig('food', 'foodId')) }
+  json['hints'].each do |item|
+    food_name = item.dig('food', 'label')
+    food_id = item.dig('food', 'foodId')
+    Item.create!(
+      name: food_name.downcase,
+      food_id: food_id
+    ) unless Item.find_by(food_id: food_id).present?
+  end
   puts "  Created #{Item.count} items"
   next_page = json.dig('_links', 'next', 'href')
   prng = Random.new
@@ -164,7 +142,7 @@ Item.all.each do |item|
       item_id: item.id,
       price: (dollars + cents).round(2)
     )
-    puts "  Created #{StoreItem.count} store items" if (StoreItem.count % 40).zero?
+    puts "  Created #{StoreItem.count} store items" if (StoreItem.count % 100).zero?
   end
 end
 puts "\nSeeding store items complete!"
