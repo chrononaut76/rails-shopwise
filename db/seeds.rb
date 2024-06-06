@@ -126,16 +126,14 @@ puts "\nSeeding stores complete!\n\n"
 # Seed 'Items' table
 puts 'Creating items...'
 # url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{ENV.fetch('EDAMAM_APP_ID')}&app_key=#{ENV.fetch('EDAMAM_API_KEY')}&nutrition-type=cooking"
-5.times do
-  response = File.read('../storage/edamam.json')
+1.times do
+  response = File.read('storage/edamam.json')
   # response = URI.open(url).read
   json = JSON.parse(response)
   json['hints'].each { |item| Item.create!(name: item.dig('food', 'knownAs').downcase, food_id: item.dig('food', 'foodId')) }
   puts "  Created #{Item.count} items"
-  next_page = json.dig('_links', 'next', 'href')
   # prng = Random.new
   # next_session = (40 * prng.rand(1..50)).to_s
-  url = next_page
   # url = next_page.sub(/\d\d+/, next_session)
 end
 puts "\nSeeding items complete!\n\n"
