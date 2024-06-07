@@ -68,9 +68,7 @@ puts "  Created #{Store.create!(
 puts "  Created #{Store.create!(
   name: 'Provigo',
   address: '50 Mont-Royal Ave W, Montreal, Quebec',
-  image_url: 'https://10619-2.s.cdn12.com/rests/original/104_505295181.jpg',
-  # longitude: '-73.662023',
-  # latitude: '45.506769'
+  image_url: 'https://10619-2.s.cdn12.com/rests/original/104_505295181.jpg'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'Intermarché Boyer',
@@ -96,6 +94,19 @@ puts "\nSeeding stores complete!\n\n"
 
 # Seed 'Items' table
 puts 'Creating items...'
+
+# Items for Demo Day
+Item.create!(name: 'penne pasta', food_id: Faker::Number.number(digits: 10))
+Item.create!(name: 'pesto', food_id: Faker::Number.number(digits: 10))
+Item.create!(name: 'salt', food_id: Faker::Number.number(digits: 10))
+Item.create!(name: 'pepper', food_id: Faker::Number.number(digits: 10))
+Item.create!(name: 'parmesan', food_id: Faker::Number.number(digits: 10))
+Item.create!(name: 'chicken breast', food_id: Faker::Number.number(digits: 10))
+Item.create!(name: 'olive oil', food_id: Faker::Number.number(digits: 10))
+Item.create!(name: '7up', food_id: Faker::Number.number(digits: 10))
+Item.create!(name: 'Perrier', food_id: Faker::Number.number(digits: 10))
+
+# Random items from API
 url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{ENV.fetch('EDAMAM_APP_ID')}&app_key=#{ENV.fetch('EDAMAM_API_KEY')}&nutrition-type=cooking"
 5.times do
   response = URI.open(url).read
