@@ -1,0 +1,85 @@
+html, body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.background-container-login {
+  background-color: #0A4D71;
+  background-image: url('logo_background/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.container-login {
+  width: 90%;
+  max-width: 390px;
+  height: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.form-actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+h2 {
+  color: #0A4D71;
+  font-size: 54px;
+  font-weight: bold;
+  margin-bottom: 152px;
+}
+
+.login-button-signin {
+  width: 336px;
+  height: 58px;
+  background-color: #0A4D71;
+  color: white;
+  border: none;
+  font-size: 22px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.or-text {
+  color: #0A4D71;
+  font-size: 20px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+label[for="user_email"],
+label[for="user_password"] {
+  color: #0A4D71;
+  font-weight: bold;
+}
+
+.sign-up-btn-login {
+  color: #0A4D71;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+input#user_remember_me + label {
+  color: #0A4D71;
+}
