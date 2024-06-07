@@ -1,36 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The page you were looking for doesn't exist (404)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  h1 {
-    color: #0A4D71 ;
-    font-size: 200px;
-    text-align: center;
-  }
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: url('/public-images/public-background.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+    }
 
-  h2{
+    .container {
+      text-align: center;
+      padding: 5vw;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.8); /* Added a semi-transparent white background */
+      max-width: 90%;
+      min-width: 300px; /* Set a minimum width for the container */
+    }
 
-  }
+    h1 {
+      color: #0A4D71;
+      font-size: 24vw;
+      margin: 0;
+    }
+
+    h2 {
+      color: #333;
+      font-size: 8vw;
+      margin: 5px 0;
+    }
+
+    p {
+      color: #666;
+      font-size: 4vw;
+      margin: 20px 0;
+    }
+
+    .back-link {
+      display: inline-block;
+      padding: 01.5vw 3vw;
+      color: #fff;
+      background-color: #0A4D71;
+      text-decoration: none;
+      border-radius: 5px;
+      line-height: 25px;
+    }
+
+    .back-link:hover {
+      background-color: #083b5a;
+    }
   </style>
 </head>
-
 <body>
-<div class="title ">
-  <H1>404</H1>
-
-  <h2>Page does not exist!</h2>
-</div>
-  <!-- <img src="400.png" class="max-width: 100%, max-height:100vh" alt="page not found"> -->
-
-  <!-- This file lives in public/404.html -->
-  <!-- <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div> -->
+  <div class="container">
+    <h1>404</h1>
+    <h2>Page does not exist!</h2>
+    <p>You may have mistyped the address or the page may have moved.</p>
+    <a href="/" class="back-link">Go Back to Home</a>
+  </div>
 </body>
 </html>
