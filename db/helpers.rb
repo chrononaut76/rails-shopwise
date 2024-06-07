@@ -10,11 +10,10 @@ Dotenv.load('../.env')
 # File.write("storage/#{key}#{i}.json", JSON.dump(data))
 
 url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{ENV.fetch('EDAMAM_APP_ID')}&app_key=#{ENV.fetch('EDAMAM_API_KEY')}&nutrition-type=cooking"
-f = File.open("../storage/edamam.json", "wb")
-5.times do
+
+5.times do |index|
   response = URI.open(url).read
   json = JSON.parse(response)
-  f.write(JSON.dump(json))
+  File.write("../storage/edamam_#{index}.json", JSON.dump(json))
   url = json.dig('_links', 'next', 'href')
 end
-f.close
