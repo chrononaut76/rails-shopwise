@@ -2,37 +2,24 @@
 
   <h1 class="text-center">Recipe Idea</h1>
 
-  <% current_recipe = { name: "", ingredients: [], instructions: [] } %>
-
-  <% @recipes_list.lines.each do |line| %>
-    <%# <% line = line.chomp %>
-    <%# <p><%= p line %>
-    <% next if line.length.zero? %>
-    <% if line.start_with?(/1\.\s/) %>
-      <% current_recipe[:name] = line.sub("1. ", "").strip %>
-    <% elsif line.start_with?(/-\s/) %>
-      <% current_recipe[:ingredients] << line.sub("- ", "").strip %>
-    <% elsif line.start_with?(/2\.\s/) %>
-      <% current_recipe[:instructions] << line.sub("2. ", "").strip %>
-    <% end %>
-  <% end %>
-
   <div class="recipe-container">
-    <h4><%= current_recipe[:name] %></h4>
+    <h4><%= @name %></h4>
     <%# <img src="" alt="Recipe Image"> %>
     <p><strong>Ingredients:</strong></p>
     <ul>
-      <% current_recipe[:ingredients].each do |ingredient| %>
-        <li><%= ingredient %></li>
+      <% @ingredients.each do |ingredient| %>
+    <li><%= ingredient %></li>
       <% end %>
     </ul>
     <p><strong>Instructions:</strong></p>
-    <p><%= current_recipe[:instructions].join(" ") %></p>
+    <p><%= @instructions %></p>
   </div>
+
   <div class="find-deals-button-container">
     <%= link_to 'Find Best Deals', stores_results_path(list: @item_ids), class: 'find-deals-button btn btn-primary' %>
     <%= link_to 'My Grocery List', my_items_path(list: @recipe_ids), class: 'generate-recipe-button btn btn-primary' %>
   </div>
+
 </div>
 
 <%# <% @recipes_list.lines.each do |line| %>

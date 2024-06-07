@@ -34,6 +34,7 @@ class UserItemsController < ApplicationController
   def recipes
     @user_items = UserItem.where(user_id: current_user.id)
     @recipes_list = recipes_list(@user_items)
+    process_recipes(@recipes_list)
     authorize @user_items
   end
 
@@ -85,5 +86,25 @@ class UserItemsController < ApplicationController
       }]
     })
     response["choices"][0]["message"]["content"]
+  end
+
+  def process_recipes(recipes_list)
+    current_recipe = { name: "", ingredients: [], instructions: "" }
+
+    recipes_list.lines.each do |line|
+      next if line.length.zero?
+
+      if line.start_with?(/1\.\s/)
+        current_recipe[:name] = line.sub("1. ", "").strip
+      elsif line.start_with?(/-\s/)
+        current_recipe[:ingredients] << line.sub("- ", "").strip
+      elsif line.start_with?(/2\.\s/)
+        current_recipe[:instructions] << line.sub("2. ", "").strip
+      end
+    end
+
+    @name = current_recipe[:name]
+    @ingredients = current_recipe[:ingredients]
+    @instructions = current_recipe[:instructions]
   end
 end
