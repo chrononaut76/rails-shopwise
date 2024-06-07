@@ -25,7 +25,7 @@ class StoresController < ApplicationController
                 {
                   lat: store.latitude,
                   lng: store.longitude,
-                  info_window_html: render_to_string(partial: "info_window", locals: { store: store, store_total: store_total}),
+                  info_window_html: render_to_string(partial: "info_window", locals: { store: store, store_total: store_total, price_category: price_category}),
                   price_category: price_category,
                 }
             end
