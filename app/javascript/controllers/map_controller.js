@@ -18,19 +18,35 @@ export default class extends Controller {
     this.#fitMapToMarkers()
   }
 
+  #setMarkerColor(marker) {
+    let color = "";
+    if (marker.price_category === 'cheapest') {
+      color = "#008000";
+    } else if (marker.price_category === 'expensive') {
+      color = "#FF0000";
+    } else if (marker.price_category === 'affordable') {
+      color = "#0A4D71";
+    };
+    return color;
+  };
+
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
-      new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .setPopup(popup)
-        .addTo(this.map)
-}
-    )};
 
-    #fitMapToMarkers() {
-      const bounds = new mapboxgl.LngLatBounds();
-      this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-      this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
-    };
-  }
+      new mapboxgl.Marker({"color": this.#setMarkerColor(marker)})
+      .setLngLat([ marker.lng, marker.lat ])
+      .setPopup(popup)
+      .addTo(this.map)
+
+
+    }
+  )};
+
+  #fitMapToMarkers() {
+    const bounds = new mapboxgl.LngLatBounds();
+    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+  };
+
+}
