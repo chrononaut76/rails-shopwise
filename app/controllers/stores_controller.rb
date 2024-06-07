@@ -11,8 +11,8 @@ class StoresController < ApplicationController
       { store: name, total_price: sum }
     end
     @total_by_store.sort_by! { |hash| hash[:total_price] }
-
-    @total_by_store.each.with_index{|h, i| h[:category] = categorize(i) }
+    number_of_stores = @total_by_store.length
+    @total_by_store.each.with_index{|h, i| h[:category] = categorize(i, number_of_stores - 1) }
 
     @stores = if params[:latitude].present? && params[:longitude].present?
                 Store.nearby(params[:latitude], params[:longitude])
@@ -33,13 +33,13 @@ class StoresController < ApplicationController
   end
 
 
-  def categorize(index)
+  def categorize(index, last_item)
     case index
-    when 0..2
+    when 0
       "cheapest"
-    when 3..5
+    when 1...last_item
       "affordable"
-    when 6..100
+    when last_item
       "expensive"
     end
   end
@@ -54,11 +54,11 @@ private
     elsif store_total == @total_by_store.last[:total_price]
       expensive = store_total
     else
-      mid_range = store_total
+      affordable = store_total
     end
     { cheapest: cheapest,
       expensive: expensive,
-      mid_range: mid_range }
+      mid_range: affordable }
   end
 
   # def exists?(value)
