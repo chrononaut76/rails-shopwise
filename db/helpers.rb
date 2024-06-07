@@ -14,7 +14,7 @@ f = File.open("../storage/edamam.json", "wb")
 5.times do
   response = URI.open(url).read
   json = JSON.parse(response)
-  f.write(json)
+  f.write(JSON.dump(json))
   url = json.dig('_links', 'next', 'href')
 end
 f.close
