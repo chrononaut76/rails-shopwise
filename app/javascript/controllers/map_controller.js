@@ -16,6 +16,7 @@ export default class extends Controller {
     });
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
+
   }
 
   #setMarkerColor(marker) {
@@ -30,16 +31,22 @@ export default class extends Controller {
     return color;
   };
 
-  #generatePopupHTML(marker) {
-    const color = this.#setMarkerColor(marker);
-    return `<div style="border: 3px solid ${color}; padding: 10px; border-radius: 5px;">${marker.info_window_html}</div>`;
-  }
+
+
+  // #generatePopupHTML(marker) {
+  //   const color = this.#setMarkerColor(marker);
+  //   return `<div style="background-color: ${color}; padding: 10px; border-radius: 5px;">
+  //   ${marker.info_window_html}
+  //   </div>`;
+  // }
+
+  // const border = document.querySelector(.)
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
-      const popupHTML = this.#generatePopupHTML(marker);
-      const popup = new mapboxgl.Popup().setHTML(popupHTML);
-      // const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
+      // const popupHTML = this.#generatePopupHTML(marker);
+      // const popup = new mapboxgl.Popup().setHTML(popupHTML);
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
 
       new mapboxgl.Marker({"color": this.#setMarkerColor(marker)})
       .setLngLat([ marker.lng, marker.lat ])
