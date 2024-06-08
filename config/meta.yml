@@ -1,0 +1,10 @@
+meta_product_name: "Shopwise"
+meta_title: "Shopwise - Shop Smart, Save More"
+meta_description: |
+  "ShopWise, your smart shopping assistant,
+  designed to make your grocery shopping pleasant.
+  Discover stores near you with cheap prices to save time and money."
+meta_image: "og_image.png" # should exist in `app/assets/images/`
+
+# required for Twitter Cards
+# twitter_account: "@product_twitter_account"
