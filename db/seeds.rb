@@ -95,22 +95,11 @@ puts "\nSeeding stores complete!\n\n"
 # Seed 'Items' table
 puts 'Creating items...'
 
-# Items for Demo Day
-Item.create!(name: 'penne pasta', food_id: Faker::Number.number(digits: 10))
-Item.create!(name: 'pesto', food_id: Faker::Number.number(digits: 10))
-Item.create!(name: 'salt', food_id: Faker::Number.number(digits: 10))
-Item.create!(name: 'pepper', food_id: Faker::Number.number(digits: 10))
-Item.create!(name: 'parmesan', food_id: Faker::Number.number(digits: 10))
-Item.create!(name: 'chicken breast', food_id: Faker::Number.number(digits: 10))
-Item.create!(name: 'olive oil', food_id: Faker::Number.number(digits: 10))
-Item.create!(name: '7up', food_id: Faker::Number.number(digits: 10))
-Item.create!(name: 'Perrier', food_id: Faker::Number.number(digits: 10))
-
-# Random items from API
-url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{ENV.fetch('EDAMAM_APP_ID')}&app_key=#{ENV.fetch('EDAMAM_API_KEY')}&nutrition-type=cooking"
-5.times do
-  response = URI.open(url).read
-  json = JSON.parse(response)
+# Random items from JSON files
+5.times do |index|
+  filepath = "storage/edamam_#{index + 1}.json"
+  data = File.read(filepath)
+  json = JSON.parse(data)
   json['hints'].each do |item|
     food_name = item.dig('food', 'label')
     food_id = item.dig('food', 'foodId')
@@ -120,11 +109,30 @@ url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{ENV.fetch('ED
     ) unless Item.find_by(food_id: food_id).present?
   end
   puts "  Created #{Item.count} items"
-  next_page = json.dig('_links', 'next', 'href')
-  prng = Random.new
-  next_session = (40 * prng.rand(1..50)).to_s
-  url = next_page.sub(/\d\d+/, next_session)
 end
+
+# Items for Demo Day
+items_for_demo_day = [
+  'penne pasta',
+  'pesto',
+  'salt',
+  'pepper',
+  'parmesan',
+  'chicken breast',
+  'olive oil',
+  '7up',
+  'Perrier'
+]
+
+items_for_demo_day.each do |item|
+  puts "  Created #{
+    Item.create!(
+      name: item,
+      food_id: Faker::Number.number(digits: 10)
+    ).name
+  }"
+end
+
 puts "\nSeeding items complete!\n\n"
 
 # Seed 'UserItems' table
