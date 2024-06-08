@@ -1,5 +1,20 @@
-<h2><%= store.name %></h2>
-<p><%= store.address %></p>
 
-<p><strong>Total List Price of Items: $<%= store_total %></strong>
-    </div>
+<div class="mapboxgl-popup">
+
+
+    <%# <img class="popup-image" src="<%= store.image_url%>
+    <%# alt="Store image"> %>
+
+
+  <div class="title">
+    <h2><%= store.name %></h2>
+  </div>
+
+  <div class="store-info">
+    <p><%= store.address %></p>
+  </div>
+
+  <div class ="result">
+    <p>Total List Price:  <strong>$<%= store_total %></strong>
+  </div>
+</div>
