@@ -11,35 +11,13 @@ require 'open-uri'
 require 'json'
 require 'faker'
 
-# Purge contents of 'UserItems' table
-unless UserItem.all.empty?
-  puts "Purging 'UserItems' table..."
-  UserItem.destroy_all
-end
-
-# Purge contents of 'Users' table
-unless User.all.empty?
-  puts "Purging 'Users' table..."
-  User.destroy_all
-end
-
-# Purge contents of 'StoreItems' table
-unless StoreItem.all.empty?
-  puts "Purging 'StoreItems' table..."
-  StoreItem.destroy_all
-end
-
-# Purge contents of 'Stores' table
-unless Store.all.empty?
-  puts "Purging 'Stores' table..."
-  Store.destroy_all
-end
-
-# Purge contents of 'Items' table
-unless Item.all.empty?
-  puts "Purging 'Items' table..."
-  Item.destroy_all
-end
+# Purge contents of all tables
+puts "Purging all tables..."
+UserItem.destroy_all
+StoreItem.destroy_all
+Store.destroy_all
+Item.destroy_all
+User.destroy_all
 
 # Seed 'Users' table
 puts "\nCreating users..."
@@ -96,20 +74,27 @@ puts "\nSeeding stores complete!\n\n"
 puts 'Creating items...'
 
 # Random items from JSON files
-5.times do |index|
-  filepath = "storage/edamam_#{index + 1}.json"
-  data = File.read(filepath)
-  json = JSON.parse(data)
-  json['hints'].each do |item|
-    food_name = item.dig('food', 'label')
-    food_id = item.dig('food', 'foodId')
-    Item.create!(
-      name: food_name.downcase,
-      food_id: food_id
-    ) unless Item.find_by(food_id: food_id).present?
+food_items = []
+4.times do |index|
+  filepath = "storage/edamam_recipes_#{index + 1}.json"
+  file = File.read(filepath)
+  data = JSON.parse(file).deep_symbolize_keys
+
+  food_items << data[:hits].flat_map do |hit|
+    hit.dig(:recipe, :ingredients).map{|ingr| { name: ingr[:food], food_id: ingr[:foodId]}}
   end
-  puts "  Created #{Item.count} items"
 end
+
+food_items.flatten!&.uniq!
+
+food_items.each do |item|
+  next if Item.find_by(food_id: item[:food_id]).present?
+  Item.create!(
+    name: item[:name].downcase,
+    food_id: item[:food_id]
+  )
+end
+puts "  Created #{Item.count} items"
 
 # Items for Demo Day
 items_for_demo_day = [
@@ -152,8 +137,8 @@ puts "Seeding user items complete!\n\n"
 
 # Seed 'StoreItems' table
 puts 'Creating store items with prices...'
-Item.all.each do |item|
-  Store.all.each do |store|
+Store.all.each do |store|
+  Item.all.each do |item|
     dollars = (5.0..15.0).step(1).to_a.sample
     cents = ((50.0..70.0).step(10).to_a.sample + 9.0) / 100
     StoreItem.create!(
