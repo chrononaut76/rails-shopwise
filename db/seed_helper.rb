@@ -1,8 +1,7 @@
 require 'open-uri'
 require 'json'
 require 'dotenv'
-Dotenv.load('.env') # run the script from the repo root: ruby db/seed_helper.rb
-
+Dotenv.load('.env')
 
 url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{ENV.fetch('EDAMAM_APP_ID')}&app_key=#{ENV.fetch('EDAMAM_API_KEY')}&nutrition-type=cooking"
 
