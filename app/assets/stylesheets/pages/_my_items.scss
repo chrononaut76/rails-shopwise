@@ -63,8 +63,8 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-  position: absolute;
-  bottom: 120px;
+  position: fixed;
+  bottom: 55px;
 }
 
 .find-deals-button, .generate-recipe-button {
