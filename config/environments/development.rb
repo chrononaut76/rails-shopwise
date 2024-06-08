@@ -74,4 +74,8 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = false
+
+  # Expose your localhost to the world for easy testing and sharing
+  # Allow requests by adding the following to your environment configuration
+  config.hosts.clear
 end

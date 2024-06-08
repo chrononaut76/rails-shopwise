@@ -5,3 +5,4 @@
 //= link popper.js
 //= link bootstrap.min.js
 //= link pages/login_styles.css
+//= link manifest.json
