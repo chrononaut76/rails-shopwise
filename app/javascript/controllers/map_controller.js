@@ -32,7 +32,7 @@ export default class extends Controller {
 
   #generatePopupHTML(marker) {
     const color = this.#setMarkerColor(marker);
-    return `<div style="background-color: ${color}; padding: 10px; border-radius: 5px;">${marker.info_window_html}</div>`;
+    return `<div style="background-color: ${color}; padding: 10px; border-radius: 5px; opacity: 0.7;">${marker.info_window_html}</div>`;
   }
 
   #addMarkersToMap() {
