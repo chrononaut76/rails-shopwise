@@ -46,7 +46,9 @@ class UserItemsController < ApplicationController
     json = JSON.parse(response)
     json['hints'].each do |item|
       unless Item.find_by(food_id: item.dig('food', 'foodId'))
-        new_item = Item.create!({ name: item.dig('food', 'knownAs').downcase, food_id: item.dig('food', 'foodId') })
+        food_name = item.dig('food', 'label')
+        food_id = item.dig('food', 'foodId')
+        new_item = Item.create!({ name: food_name.downcase, food_id: food_id })
         add_store_item(new_item)
       end
     end
