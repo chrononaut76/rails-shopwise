@@ -1,5 +1,33 @@
-<h2><%= store.name %></h2>
-<p><%= store.address %></p>
 
-<p><strong>Total List Price of Items: $<%= store_total %></strong>
+<div class="store-container">
+    <img class="popup-image" src="<%= store.image_url%>" alt="Store image">
+
+
+  <div class="card-info">
+      <div class="store-category">
+        <div class="title">
+          <h2><%= store.name %></h2>
+        </div>
+
+        <% if price_category == "cheapest" %>
+          <button type="button" class="background-green button-outline" disabled>$</button>
+
+        <% elsif price_category == "affordable" %>
+          <button type="button" class="background-blue button-outline" disabled>$$</button>
+
+        <% elsif price_category == "expensive" %>
+            <button type="button" class="background-red button-outline" disabled>$$$</button>
+
+        <% end %>
+
+      </div>
+
+
+    <div class="store-info">
+      <p><%= store.address %></p>
     </div>
+
+    <p class="result">Total List Price:  <strong>$<%= store_total %></strong>
+
+  </div>
+</div>
