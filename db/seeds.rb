@@ -75,7 +75,7 @@ puts 'Creating items...'
 
 # Random items from JSON files
 food_items = []
-4.times do |index|
+10.times do |index|
   filepath = "storage/edamam_recipes_#{index + 1}.json"
   file = File.read(filepath)
   data = JSON.parse(file).deep_symbolize_keys
