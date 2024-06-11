@@ -2,6 +2,7 @@
 <html>
   <head>
     <title><%= meta_title %></title>
+    <%= favicon_link_tag %>
     <meta name="description" content="<%= meta_description %>">
 
     <%# Facebook Open Graph data %>
@@ -26,7 +27,6 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <script src="https://kit.fontawesome.com/8416fec96b.js" crossorigin="anonymous"></script>
-    <%= favicon_link_tag %>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
