@@ -1,16 +1,17 @@
 require 'open-uri'
 require 'json'
-# require 'dotenv'
+
+# run the script from the repo root: ruby db/seed_helper.rb
+# require 'dotenv' # uncomment to use in development
 # Dotenv.load('.env')
 
-url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{ENV.fetch('EDAMAM_APP_ID')}&app_key=#{ENV.fetch('EDAMAM_API_KEY')}&nutrition-type=cooking"
-
-5.times do |index|
+filters = "&diet=balanced&dishType=Bread&dishType=Cereals&dishType=Main%20course&dishType=Preps&dishType=Salad&dishType=Sandwiches&dishType=Side%20dish&dishType=Soup&dishType=Starter&imageSize=THUMBNAIL"
+url = "https://api.edamam.com/api/recipes/v2?type=public&app_id=#{ENV.fetch('EDAMAM_RECIPE_API_APP_ID')}&app_key=#{ENV.fetch('EDAMAM_RECIPE_API_KEY')}#{filters}"
+10.times do |index|
+  sleep(30) if index == 5 # avoid reaching the API's rate limits
   response = URI.open(url).read
-  json = JSON.parse(response)
-  File.write("storage/edamam_#{index + 1}.json", JSON.dump(json))
-  next_page = json.dig('_links', 'next', 'href')
-  prng = Random.new
-  next_session = (40 * prng.rand(1..50)).to_s
-  url = next_page.sub(/\d\d+/, next_session)
+  data = JSON.parse(response)
+  File.write("storage/edamam_recipes_#{index + 1}.json", JSON.dump(data))
+  next_page = data.dig("_links", "next", "href")
+  url = next_page
 end

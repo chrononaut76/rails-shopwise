@@ -39,6 +39,9 @@
 *.swp
 .DS_Store
 
+# Ignore your teacher's pesky IDE
+.idea/*
+
 # Ignore scraped HTML files
 metro*html
 iga*html
