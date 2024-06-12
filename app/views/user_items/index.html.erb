@@ -23,11 +23,12 @@
         <% @user_items.each do |user_item| %>
           <div class="card-body list-group-item" data-item-id="<%= user_item.id %>">
             <input type="checkbox" class="item-checkbox" data-action="change->search-items#toggleEmptyMessage">
-            <h5 class="card-title text-start"><%= user_item.item.name %>
+            <div class="item-container">
+              <h5 class="card-title text-start"><%= user_item.item.name %></h5>
               <%= link_to my_item_path(user_item), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-link" do %>
                 <i class="fas fa-trash-alt"></i>
               <% end %>
-            </h5>
+            </div>
           </div>
         <% end %>
       </div>
@@ -43,8 +44,9 @@
   <% end %>
   <% if @user_items.any? %>
     <div class="find-deals-button-container">
-      <%= link_to 'Find Best Deals', stores_results_path(list: @item_ids), class: 'find-deals-button btn btn-primary' %>
-      <%= link_to 'Generate Recipe', recipes_my_items_path(list: @recipe_ids), class: 'generate-recipe-button btn btn-primary' %>
+      <%= link_to 'Find Best Deals', stores_results_path(list: @item_ids), class: 'find-deals-button btn btn-primary mb-2' %>
+      <p class="mb-2 inspiration-text">Need inspiration?</p>
+      <%= link_to 'Suggest Recipe', recipes_my_items_path(list: @recipe_ids), class: 'generate-recipe-button btn btn-secondary' %>
     </div>
   <% end %>
 </div>
