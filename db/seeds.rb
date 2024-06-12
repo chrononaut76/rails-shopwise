@@ -46,7 +46,7 @@ puts "  Created #{Store.create!(
 puts "  Created #{Store.create!(
   name: 'Provigo',
   address: '50 Mont-Royal Ave W, Montreal, Quebec',
-  image_url: 'https://lh3.googleusercontent.com/p/AF1QipPW-iP8bt4Sz8QPdyHANH9N7J4JwgwxuTTSxeQQ=s680-w680-h510'
+  image_url: 'https://lh3.googleusercontent.com/p/AF1QipOiKNWn4GL1z3Czdv-Gr7lJ2cyUeCi_5ih47G0x=s1360-w1360-h1020'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'Intermarché Boyer',
