@@ -61,18 +61,33 @@
 .find-deals-button-container {
   text-align: center;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   gap: 10px;
   position: fixed;
   bottom: 55px;
 }
 
-.find-deals-button, .generate-recipe-button {
+.find-deals-button {
   display: inline-block;
-  padding: 10px;
+  padding: 12px 20px;
   background-color: #0A4D71;
   color: white;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+}
+
+.generate-recipe-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #0A4D71;
+  color: white;
+  font-size: 16px;
   font-weight: bold;
   text-align: center;
   border: none;
@@ -83,6 +98,12 @@
 
 .find-deals-button:hover, .generate-recipe-button:hover {
   background-color: #05536D;
+}
+
+.inspiration-text {
+  color: #0A4D71;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .search-form {
