@@ -138,7 +138,8 @@ puts "Seeding user items complete!\n\n"
 # Seed 'StoreItems' table
 puts 'Creating store items with prices...'
 Item.all.each do |item|
-  price_offset = (-1..1).step(1.0/Store.count).to_a.reverse
+  price_offset = (-3.0..3.0).step(0.75).to_a.reverse
+  price_offset.delete_if { |element| element.zero? }
   Store.all.each_with_index do |store, index|
     dollars = (5.0..15.0).step(1).to_a.sample
     cents = ((50.0..70.0).step(10).to_a.sample + 9.0) / 100
@@ -150,4 +151,5 @@ Item.all.each do |item|
     puts "  Created #{StoreItem.count} store items" if (StoreItem.count % 100).zero?
   end
 end
+puts "  Created #{StoreItem.count} store items"
 puts "\nSeeding store items complete!"

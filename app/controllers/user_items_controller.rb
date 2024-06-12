@@ -55,7 +55,8 @@ class UserItemsController < ApplicationController
   end
 
   def add_store_item(new_item)
-    price_offset = (-1..1).step(1.0/Store.count).to_a.reverse
+    price_offset = (-3.0..3.0).step(0.75).to_a.reverse
+    price_offset.delete_if { |element| element.zero? }
     Store.all.each_with_index do |store, index|
       dollars = (5.0..15.0).step(1).to_a.sample
       cents = ((50.0..70.0).step(10).to_a.sample + 9.0) / 100
