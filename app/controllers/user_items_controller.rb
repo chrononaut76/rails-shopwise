@@ -41,7 +41,7 @@ class UserItemsController < ApplicationController
   private
 
   def query_api
-    url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{ENV.fetch('EDAMAM_APP_ID')}&app_key=#{ENV.fetch('EDAMAM_API_KEY')}&ingr=#{params[:query]}"
+    url = "https://api.edamam.com/api/food-database/v2/parser?app_id=#{ENV.fetch('EDAMAM_RECIPE_API_APP_ID')}&app_key=#{ENV.fetch('EDAMAM_RECIPE_API_KEY')}&ingr=#{params[:query]}"
     response = URI.open(url).read
     json = JSON.parse(response)
     json['hints'].each do |item|
