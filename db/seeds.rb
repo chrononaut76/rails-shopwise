@@ -34,19 +34,19 @@ puts "  Created #{Store.create!(
   image_url: 'https://lh3.googleusercontent.com/p/AF1QipNzXIZMV72kFHNKXYSplOptzskjABtttTgRq2La=s1360-w1360-h1020'
 ).name}"
 puts "  Created #{Store.create!(
+  name: 'Provigo',
+  address: '50 Mont-Royal Ave W, Montreal, Quebec',
+  image_url: 'https://lh3.googleusercontent.com/p/AF1QipPW-iP8bt4Sz8QPdyHANH9N7J4JwgwxuTTSxeQQ=s680-w680-h510'
+).name}"
+puts "  Created #{Store.create!(
   name: 'Metro',
   address: '1293 Laurier Ave E, Montreal, Quebec H2J 1H2',
   image_url: 'https://lh5.googleusercontent.com/-qgyoULa4YbI/V0uVJ3dx56I/AAAAAAAAi10/MXU45riP6FoqltvxMZ4_OrLZVlk8-4vRwCLIB/s1600-w640/'
 ).name}"
 puts "  Created #{Store.create!(
-  name: 'PA',
-  address: '5242 Park Ave, Montreal, Quebec H2V 4G7',
-  image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHqx-pcSk2lEC3U8H6O3BI_uuQFuEz7E_AKQ&s'
-).name}"
-puts "  Created #{Store.create!(
-  name: 'Provigo',
-  address: '50 Mont-Royal Ave W, Montreal, Quebec',
-  image_url: 'https://lh3.googleusercontent.com/p/AF1QipPW-iP8bt4Sz8QPdyHANH9N7J4JwgwxuTTSxeQQ=s680-w680-h510'
+  name: 'P&A Nature',
+  address: '5029 Park Ave, Montreal, Quebec',
+  image_url: 'https://lh3.googleusercontent.com/p/AF1QipOE4iP3L1XPAF-OZdrKICgsr5JQalluONUdePHc=s1360-w1360-h1020'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'Intermarché Boyer',
@@ -59,9 +59,9 @@ puts "  Created #{Store.create!(
   image_url: 'https://la-gare-jean-talon.weebly.com/uploads/7/8/2/0/78202338/9528564.png'
 ).name}"
 puts "  Created #{Store.create!(
-  name: 'P&A Nature',
-  address: '5029 Park Ave, Montreal, Quebec',
-  image_url: 'https://lh3.googleusercontent.com/p/AF1QipOE4iP3L1XPAF-OZdrKICgsr5JQalluONUdePHc=s1360-w1360-h1020'
+  name: 'PA',
+  address: '5242 Park Ave, Montreal, Quebec H2V 4G7',
+  image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHqx-pcSk2lEC3U8H6O3BI_uuQFuEz7E_AKQ&s'
 ).name}"
 puts "  Created #{Store.create!(
   name: 'Super C',
@@ -137,14 +137,15 @@ puts "Seeding user items complete!\n\n"
 
 # Seed 'StoreItems' table
 puts 'Creating store items with prices...'
-Store.all.each do |store|
-  Item.all.each do |item|
+Item.all.each do |item|
+  price_offset = (-1..1).step(1.0/Store.count).to_a.reverse
+  Store.all.each_with_index do |store, index|
     dollars = (5.0..15.0).step(1).to_a.sample
     cents = ((50.0..70.0).step(10).to_a.sample + 9.0) / 100
     StoreItem.create!(
       store_id: store.id,
       item_id: item.id,
-      price: (dollars + cents).round(2)
+      price: (dollars + cents + price_offset[index]).round(2)
     )
     puts "  Created #{StoreItem.count} store items" if (StoreItem.count % 100).zero?
   end
