@@ -5,3 +5,19 @@
   height: 560px;
   overflow: scroll;
 }
+
+.back-button-recipes{
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  z-index: 2;
+}
+
+.fa-border-recipes{
+  color: #0A4D71;
+  background-color: transparent;
+  // border: .08em solid #c9c9c9 !important;
+  // border-radius: 50% !important ;
+  padding: .2em .25em .15em !important;
+  // box-shadow: 2px 5px 7px grey;
+}
