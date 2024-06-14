@@ -1,8 +1,5 @@
 <div class="my-items-container" data-controller="toggle-empty-message">
 
-  <%= link_to my_items_path, class:"back-button-recipes" do %>
-      <i class="fa-solid fa-arrow-left fa-border-recipes fa-2x"></i>
-  <% end %>
 
 
   <h1 class="text-center">Recipe Idea</h1>
@@ -21,7 +18,6 @@
   </div>
 
   <div class="find-deals-button-container">
-    <%= link_to 'Find Best Deals', stores_results_path(list: @item_ids), class: 'find-deals-button btn btn-primary' %>
     <%= link_to 'My Grocery List', my_items_path(list: @recipe_ids), class: 'generate-recipe-button btn btn-primary' %>
   </div>
 
