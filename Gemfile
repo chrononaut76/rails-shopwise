@@ -26,8 +26,6 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
-gem "geocoder"
-
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
@@ -55,11 +53,10 @@ gem "sassc-rails"
 gem "pundit"
 gem "faker"
 gem "open-uri"
-gem "nokogiri"
-gem "watir"
+gem "geocoder"
 gem "pg_search"
 gem "ruby-openai"
-gem "redis"
+gem "scout_apm"
 
 group :development, :test do
   gem "dotenv-rails"
