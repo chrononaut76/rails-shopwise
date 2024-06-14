@@ -1,27 +1,29 @@
-<div class="my-items-container" data-controller="toggle-empty-message">
+<%= render 'demo_day_recipe' %>
+
+<%# <div class="my-items-container" data-controller="toggle-empty-message">
 
 
 
   <h1 class="text-center">Recipe Idea</h1>
 
   <div class="recipe-container">
-    <h4><%= @name %></h4>
+    <h4><%= @name %>
     <%# <img src="" alt="Recipe Image"> %>
-    <p><strong>Ingredients:</strong></p>
-    <ul>
+    <%# <p><strong>Ingredients:</strong></p> %>
+    <%# <ul>
       <% @ingredients.each do |ingredient| %>
-    <li><%= ingredient %></li>
-      <% end %>
-    </ul>
-    <p><strong>Instructions:</strong></p>
-    <p><%= @instructions %></p>
-  </div>
+    <%# <li><%= ingredient %>
+      <%# <% end %>
+    <%# </ul> %>
+    <%# <p><strong>Instructions:</strong></p> %>
+    <%# <p><%= @instructions %>
+  <%# </div> %>
 
-  <div class="find-deals-button-container">
-    <%= link_to 'My Grocery List', my_items_path(list: @recipe_ids), class: 'generate-recipe-button btn btn-primary' %>
-  </div>
+  <%# <div class="find-deals-button-container"> %>
+    <%# <%= link_to 'My Grocery List', my_items_path(list: @recipe_ids), class: 'generate-recipe-button btn btn-primary' %>
+  <%# </div> %>
 
-</div>
+<%# </div> %>
 
 <%# <% @recipes_list.lines.each do |line| %>
   <%# <%= tag.p line.chomp %>
