@@ -1,0 +1,21 @@
+<div class="my-items-container" data-controller="toggle-empty-message">
+
+  <h1 class="text-center">Recipe Idea</h1>
+
+  <div class="recipe-container">
+    <h4>Chicken Pesto Penne</h4>
+    <p><strong>Ingredients:</strong></p>
+    <ul>
+      <li>2 chicken breasts</li>
+      <li>12 oz penne pasta</li>
+      <li>1 cup grated parmesan cheese</li>
+  </ul>
+    <p><strong>Instructions:</strong></p>
+    <p>    Start by cooking the penne pasta according to package instructions. While the pasta is cooking, season the chicken breasts with salt and pepper and cook in a skillet over medium heat until fully cooked. Once cooked, slice the chicken into strips. In a separate large skillet, combine the cooked penne pasta, sliced chicken, and pesto sauce. Mix well to coat everything evenly. Finally, sprinkle the grated parmesan cheese over the top and stir until melted. Serve hot and enjoy your delicious Chicken Pesto Penne!</p>
+  </div>
+
+  <div class="find-deals-button-container">
+    <%= link_to 'My Grocery List', my_items_path(list: @recipe_ids), class: 'generate-recipe-button btn btn-primary' %>
+  </div>
+
+</div>
