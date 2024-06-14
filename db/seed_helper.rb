@@ -11,7 +11,7 @@ url = "https://api.edamam.com/api/recipes/v2?type=public&app_id=#{ENV.fetch('EDA
   sleep(30) if index == 5 # avoid reaching the API's rate limits
   response = URI.open(url).read
   data = JSON.parse(response)
-  File.write("storage/edamam_recipes_#{index + 1}.json", JSON.dump(data))
+  File.write("db/edamam-storage/edamam_recipes_#{index + 1}.json", JSON.dump(data))
   next_page = data.dig("_links", "next", "href")
   url = next_page
 end
