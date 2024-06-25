@@ -8,7 +8,7 @@ You can access the App by clicking:
 <p ><a href="https://www.shopwise.cooking/" target="_blank" rel="noreferrer"> <img src="app/assets/images/icons/ms-icon-70x70.png" alt="shopwise icon" width="40" height="40"/> </a></p>
 
 <h2 align="left">App Preview:</h2>
-<img src="app/assets/images/app_preview/shopwise_preview1.png" alt="Preview look to APP stories" style="max-width: 100%;">
+<img src="app/assets/images/app_preview/shopwise_preview.png" alt="Preview look to APP stories" style="max-width: 100%;">
 
 <h2 class="heading-element" dir="auto">Features:</h2>
 
