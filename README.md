@@ -16,5 +16,7 @@
 - <strong>Finding the best deals:</strong> By showing pins that represent different grocery store locations, the user can click to see each store location details and total price. The red and green colors indentify the most and least expensive respectively.
 - <strong>Suggest a recipe:</strong> Based on the user's Grocery List, the app will suggest a recipe idea.
 
+<h2 class="heading-element" dir="auto">Technology Used:</h2>
+
 
 Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
