@@ -21,7 +21,7 @@
 - <strong>Frontend:</strong> Bootstrap, Sass, Stimulus & JavaScript.
 - <strong>Backend:</strong> Ruby on Rails.
 - <strong>Database:</strong> PostgreSQL.
-- <strong>External APIs:</strong> Open AI, Edamam & Geocoder.
+- <strong>External APIs:</strong> Open AI (generate recipes), Edamam (feed items list DB) & Geocoder (show stores location).
 
 
 Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
