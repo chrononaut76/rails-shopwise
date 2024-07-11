@@ -18,10 +18,10 @@
 
 <h2 class="heading-element" dir="auto">Technology Used:</h2>
 
-- <strong>Frontend:</strong>
-- <strong>Backend:</strong>
-- <strong>Database:</strong>
-- <strong>External APIs:</strong>
+- <strong>Frontend:</strong> Bootstrap, Sass & JavaScript.
+- <strong>Backend:</strong> Ruby on Rails.
+- <strong>Database:</strong> PostgreSQL.
+- <strong>External APIs:</strong> Open AI, Edamam & Geocoder.
 
 
 Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
