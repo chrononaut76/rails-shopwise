@@ -18,7 +18,7 @@
 
 <h2 class="heading-element" dir="auto">Technology Used:</h2>
 
-- <strong>Frontend:</strong> Bootstrap, Sass & JavaScript.
+- <strong>Frontend:</strong> Bootstrap, Sass, Stimulus & JavaScript.
 - <strong>Backend:</strong> Ruby on Rails.
 - <strong>Database:</strong> PostgreSQL.
 - <strong>External APIs:</strong> Open AI, Edamam & Geocoder.
