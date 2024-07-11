@@ -14,7 +14,7 @@
 
 - <strong>Creating a grocery list:</strong> By adding and/or deleting items to the user's list.
 - <strong>Finding the best deals:</strong> By showing pins that represent different grocery store locations, the user can click to see each store location details and total price. The red and green colors indentify the most and least expensive respectively.
-- <strong>Suggest a recipe:</strong> Based on the user's Grocery List, the app will suggest a recipe idea.
+- <strong>Suggest a recipe:</strong> Powered by AI, based on the user's Grocery List, the app will suggest a recipe idea.
 
 <h2 class="heading-element" dir="auto">Technology Used:</h2>
 
